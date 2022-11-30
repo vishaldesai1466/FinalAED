@@ -8,10 +8,39 @@ package Business.Enterprise;
 import Business.Organization.Organization;
 import Business.Organization.OrganizationDirectory;
 
+
 public abstract class Enterprise extends Organization{
     
     private OrganizationDirectory organizationDirectory;
+    private EnterpriseType enterpriseType;
+    
+    public Enterprise(String name, EnterpriseType type) {
+        super(name);
+        enterpriseType=type;
+        organizationDirectory=new OrganizationDirectory();
+    }
+    
+    public enum EnterpriseType{
+        MainCenter("MainCenter"), InventoryCenter("InventoryCenter"), CompostingCenter("CompostingCenter"), TransportCenter("TransportCenter");
+        
+        private String value;
+        private EnterpriseType(String value){
+            this.value=value;
+        }
+        public String getValue() {
+            return value;
+        }
 
+        public void setValue(String value) {
+            this.value = value;
+        }
+        @Override
+        public String toString(){
+            return value;
+        }
+    }
+
+    
     public OrganizationDirectory getOrganizationDirectory() {
         return organizationDirectory;
     }
