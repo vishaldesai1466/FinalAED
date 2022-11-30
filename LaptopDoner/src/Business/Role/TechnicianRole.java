@@ -11,11 +11,7 @@ import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
 
-/**
- *
- * @author Aadesh Randeria
- */
-public class LabManagerRole extends Role {
+public class TechnicianRole extends Role {
 
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business) {
@@ -24,4 +20,3 @@ public class LabManagerRole extends Role {
     }
     
 }
-    

@@ -9,10 +9,7 @@ import Business.Employee.Employee;
 //import Business.Role.AdminRole;
 import Business.UserAccount.UserAccount;
 
-/**
- *
- * @author neeraj
- */
+
 public class ConfigureABusiness {
     
 //    public static Business configure(){

@@ -5,20 +5,23 @@
  */
 package Business.Organization;
 
-import Business.Role.InventoryManagerRole;
+import Business.Role.DriverRole;
 import Business.Role.Role;
+import Business.Role.TransportManagerRole;
 import java.util.ArrayList;
 
 
-public class Inventory extends Organization{
-    
-    public Inventory(){
-        super(Organization.Type.Inventory.getValue());
+public class Transport extends Organization {
+
+    public Transport() {
+        super(Organization.Type.Transport.getValue());
     }
+
     @Override
     public ArrayList<Role> getSupportedRole() {
-       ArrayList<Role> roles = new ArrayList();
-        roles.add(new InventoryManagerRole());
+        ArrayList<Role> roles = new ArrayList();
+        roles.add(new TransportManagerRole());
+        roles.add(new DriverRole());
         return roles;
     }
     

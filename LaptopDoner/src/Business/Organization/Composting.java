@@ -5,20 +5,21 @@
  */
 package Business.Organization;
 
-import Business.Role.InventoryManagerRole;
+import Business.Role.RecycleManagerRole;
 import Business.Role.Role;
 import java.util.ArrayList;
 
 
-public class Inventory extends Organization{
-    
-    public Inventory(){
-        super(Organization.Type.Inventory.getValue());
+public class Composting extends Organization {
+
+    public Composting() {
+        super(Organization.Type.Composting.getValue());
     }
+
     @Override
     public ArrayList<Role> getSupportedRole() {
-       ArrayList<Role> roles = new ArrayList();
-        roles.add(new InventoryManagerRole());
+        ArrayList<Role> roles = new ArrayList();
+        roles.add(new RecycleManagerRole());
         return roles;
     }
     
