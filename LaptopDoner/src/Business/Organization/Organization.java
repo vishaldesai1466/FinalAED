@@ -11,6 +11,7 @@ import Business.UserAccount.UserAccountDirectory;
 import Business.WorkQueue.WorkQueue;
 import java.util.ArrayList;
 
+
 public abstract class Organization {
     private String name;
     private WorkQueue workQueue;
@@ -21,7 +22,7 @@ public abstract class Organization {
     public abstract ArrayList<Role> getSupportedRole();
     
     public enum Type{
-        Admin("Admin Organization"), Doctor("Doctor Organization"), Lab("Lab Organization");
+        Donor("Donor"), MainOffice("Main Office"),Inventory("Inventory"), Lab("Lab Organization");
         private String value;
         private Type(String value) {
             this.value = value;

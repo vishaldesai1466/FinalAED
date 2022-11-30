@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 public class OrganizationDirectory {
     private ArrayList<Organization> organizationList;
-
+    
     public OrganizationDirectory(){
         organizationList = new ArrayList();
     }
@@ -22,6 +22,7 @@ public class OrganizationDirectory {
     public void setOrganizationList(ArrayList<Organization> organizationList) {
         this.organizationList = organizationList;
     }
-
+    
+    
     
 }

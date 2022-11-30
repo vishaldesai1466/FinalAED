@@ -8,6 +8,7 @@ package Business.WorkQueue;
 import Business.UserAccount.UserAccount;
 import java.util.Date;
 
+
 public abstract class WorkRequest {
 
     private String message;
@@ -69,3 +70,4 @@ public abstract class WorkRequest {
         this.resolveDate = resolveDate;
     }
 }
+

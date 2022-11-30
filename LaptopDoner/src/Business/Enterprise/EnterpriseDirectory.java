@@ -7,10 +7,7 @@ package Business.Enterprise;
 
 import java.util.ArrayList;
 
-/**
- *
- * @author HP
- */
+
 public class EnterpriseDirectory {
     private ArrayList<Enterprise> enterpriseList;
     

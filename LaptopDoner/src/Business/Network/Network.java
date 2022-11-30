@@ -5,14 +5,13 @@
  */
 package Business.Network;
 
-
 import Business.Enterprise.EnterpriseDirectory;
 
 
 public class Network {
-     private String name;
+    private String name;
     private EnterpriseDirectory enterpriseDirectory;
-
+    
     public Network(){
         enterpriseDirectory=new EnterpriseDirectory();
     }
@@ -29,5 +28,6 @@ public class Network {
     }
     public String toString(){
         return name;
-    } 
+    }   
+    
 }
