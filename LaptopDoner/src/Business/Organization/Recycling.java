@@ -10,10 +10,10 @@ import Business.Role.Role;
 import java.util.ArrayList;
 
 
-public class Composting extends Organization {
+public class Recycling extends Organization {
 
-    public Composting() {
-        super(Organization.Type.Composting.getValue());
+    public Recycling() {
+        super(Organization.Type.Recycling.getValue());
     }
 
     @Override
