@@ -10,6 +10,7 @@ public class Donor {
      private String name;
      private String emailId;
      private long phoneNo;
+     private String type;
      
     private int id;
     private static int count = 1;
@@ -46,6 +47,13 @@ public class Donor {
 
     public void setPhoneNo(long phoneNo) {
         this.phoneNo = phoneNo;
+    }
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     
