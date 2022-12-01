@@ -4,14 +4,12 @@
  */
 package UserInterface;
 
-//import Business.Ecosystem;
-//import Business.ConfigureASystem;
-//import Business.DB4OUtil.DB4OUtil;
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Network.Network;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
+import userinterface.SignupJPanel;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -23,11 +21,10 @@ public class MainJFrame extends javax.swing.JFrame {
      * Creates new form MainJFrame
      */
     private EcoSystem system;
- //   private DB4OUtil dB4OUtil = DB4OUtil.getInstance();
-
+ 
     public MainJFrame() {
         initComponents();
-    //    system = dB4OUtil.retrieveSystem();
+   
     }
 
     /**
@@ -216,11 +213,11 @@ public class MainJFrame extends javax.swing.JFrame {
         container.add("blank", blankJP);
         CardLayout crdLyt = (CardLayout) container.getLayout();
         crdLyt.next(container);
-      //  dB4OUtil.storeSystem(system);
     }//GEN-LAST:event_logoutJButtonActionPerformed
 
     private void signUpButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signUpButtonActionPerformed
-       SignupJPanel signUpJPanel = new SignupJPanel(container);
+      
+        SignupJPanel signUpJPanel = new SignupJPanel(container);
        CardLayout layout = (CardLayout) container.getLayout();
         
         container.add("signUpJPanel", signUpJPanel);

@@ -220,11 +220,6 @@ public class SignupJPanel extends javax.swing.JPanel {
             emailIdFlag=true;
             JOptionPane.showMessageDialog(null, "Please enter a valid EmailID");
           }
-//           if(userNameTxt.getText().isEmpty() || !Validations.isUserNameUnique(emailTxt.getText()))
-//          {
-//            Flag=true;
-//            JOptionPane.showMessageDialog(null, "This username is not unique");
-//          }
 
           if(passvordTxt.getText().isEmpty() )
           {
@@ -244,7 +239,6 @@ public class SignupJPanel extends javax.swing.JPanel {
               user.setUsername(userNameTxt.getText());
               user.setPassword(passvordTxt.getText());
               UserAccountDirectory userAccountDirectory=new UserAccountDirectory();
-              userAccountDirectory.addAccount(user);
            }
     }//GEN-LAST:event_submitButtonActionPerformed
 
