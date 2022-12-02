@@ -25,12 +25,13 @@ public class OrganizationDirectory {
     
     public Organization createOrganization(Organization.Type type){
         Organization organization = null;
+        
         if (type.getValue().equals(Organization.Type.Donor.getValue())){
             organization = new DonorOrganization();
             organizationList.add(organization);
         }
-        else if (type.getValue().equals(Organization.Type.Lab.getValue())){
-            organization = new Lab();
+        else if (type.getValue().equals(Organization.Type.ServiceCenter.getValue())){
+            organization = new ServiceCenter();
             organizationList.add(organization);
         }
         else if (type.getValue().equals(Organization.Type.MainOffice.getValue())){
@@ -41,15 +42,18 @@ public class OrganizationDirectory {
             organization = new Inventory();
             organizationList.add(organization);
         }
-        else if (type.getValue().equals(Organization.Type.Composting.getValue())){
-            organization = new Composting();
+        else if (type.getValue().equals(Organization.Type.Recycling.getValue())){
+            organization = new Recycling();
             organizationList.add(organization);
         }
         else if (type.getValue().equals(Organization.Type.Transport.getValue())){
             organization = new Transport();
             organizationList.add(organization);
         }
+        
+        
         return organization;
     
     
+    }
 }

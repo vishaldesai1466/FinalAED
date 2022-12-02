@@ -8,6 +8,7 @@ package userinterface.AdministrativeRole;
 import Business.Organization.Organization;
 import Business.Organization.Organization.Type;
 import Business.Organization.OrganizationDirectory;
+import Business.Organization.AdminOrganization;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;

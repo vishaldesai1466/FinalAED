@@ -18,8 +18,8 @@ public abstract class Role {
         MainOfficeManager("Main Office Manager"),
         InventoryManager("Inventory Manager"),
         Donor("Donor"),
-        LabManager("Lab Manager"),
-        LabAssistant("Lab Assistant"),
+        ServiceCenterManager("ServiceCenter Manager"),
+        Technician("Technician"),
         CompostManager("Compost Manager"),
         TransportManager("Transport Manager"),
         Driver("Driver");
