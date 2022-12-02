@@ -9,10 +9,10 @@ import Business.Role.Role;
 import java.util.ArrayList;
 
 
-public class CompostingCenterEnterprise extends Enterprise {
+public class RecyclingCenterEnterprise extends Enterprise {
 
-    public CompostingCenterEnterprise(String name, EnterpriseType type) {
-        super(name, EnterpriseType.CompostingCenter);
+    public RecyclingCenterEnterprise(String name) {
+        super(name, EnterpriseType.RecyclingCenter);
     }
 
     @Override
