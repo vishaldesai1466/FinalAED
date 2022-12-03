@@ -20,8 +20,10 @@ public abstract class Role {
         Donor("Donor"),
         ServiceCenterManager("ServiceCenter Manager"),
         Technician("Technician"),
-        CompostManager("Compost Manager"),
+        RecycleManager("Recycle Manager"),
         TransportManager("Transport Manager"),
+        StoreChainManager("StoreChainManager"),    
+        StoreManager("StoreManager"), 
         Driver("Driver");
         
         private String value;

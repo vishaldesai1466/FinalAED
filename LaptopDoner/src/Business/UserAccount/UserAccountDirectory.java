@@ -38,4 +38,7 @@ public class UserAccountDirectory {
         userAccountList.add(userAccount);
         return userAccount;
     }
+    public void addAccount(UserAccount user){
+        userAccountList.add(user);
+    } 
 }

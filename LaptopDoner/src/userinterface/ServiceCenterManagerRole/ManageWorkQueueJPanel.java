@@ -5,6 +5,10 @@
  */
 package userinterface.ServiceCenterManagerRole;
 
+/**
+ *
+ * @author Aadesh Randeria
+ */
 public class ManageWorkQueueJPanel extends javax.swing.JPanel {
 
     /**

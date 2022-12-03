@@ -12,7 +12,6 @@ import Business.Role.SystemAdminRole;
 //import Business.Role.SystemAdminRole;
 import java.util.ArrayList;
 
-
 public class EcoSystem extends Organization {
     
     private static EcoSystem business;
@@ -47,14 +46,5 @@ public class EcoSystem extends Organization {
         roleList.add(new SystemAdminRole());
         return roleList;
     }
-//    public boolean checkIfUserNameIsUnique(String userName){
-//        if(! this.getUserAccountDirectory().checkIfUsernameIsUnique(userName)){
-//            return false;
-//        }
-//        for(Network network: networkList){
-//            
-//        }
-//        return true;
-//    }
-    
+
 }

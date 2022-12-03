@@ -12,6 +12,7 @@ import Business.Organization.Organization;
 import Business.Organization.StoreChain;
 import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
+import userinterface.DonorRole.DonorWorkAreaJPanel;
 import userinterface.StoreChainManagerRole.StoreChainWorkAreaJPanel;
 
 

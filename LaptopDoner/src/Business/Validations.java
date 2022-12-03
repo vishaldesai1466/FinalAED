@@ -41,8 +41,4 @@ public class Validations {
           return output;
     }
     
-//    private boolean isUserNameUnique(String name){
-//    
-//        for(UserAccount: getUserAccountDirectory())
-//    }
 }
