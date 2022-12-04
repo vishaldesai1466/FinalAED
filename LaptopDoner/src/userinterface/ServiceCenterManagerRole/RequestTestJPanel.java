@@ -5,10 +5,7 @@
  */
 package userinterface.ServiceCenterManagerRole;
 
-/**
- *
- * @author Aadesh Randeria
- */
+
 public class RequestTestJPanel extends javax.swing.JPanel {
 
     /**

@@ -11,10 +11,7 @@ import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
 
-/**
- *
- * @author Aadesh Randeria
- */
+
 public class ServiceCenterManagerWorkAreaJPanel extends javax.swing.JPanel {
 
     /**
@@ -49,7 +46,7 @@ public class ServiceCenterManagerWorkAreaJPanel extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setText("My Work Area - ServiceCenter Manager Role");
 
-        btnManageTechnician.setText("Manage Lab Assistant");
+        btnManageTechnician.setText("Manage Technician");
         btnManageTechnician.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnManageTechnicianActionPerformed(evt);

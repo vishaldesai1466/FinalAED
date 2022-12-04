@@ -5,10 +5,7 @@
  */
 package userinterface.ServiceCenterManagerRole;
 
-/**
- *
- * @author Aadesh Randeria
- */
+
 public class ProcessWorkRequestJPanel extends javax.swing.JPanel {
 
     /**

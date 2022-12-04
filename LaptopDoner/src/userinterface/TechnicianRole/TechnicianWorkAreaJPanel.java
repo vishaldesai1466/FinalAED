@@ -12,10 +12,7 @@ import Business.Organization.Technician;
 import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
 
-/**
- *
- * @author Aadesh Randeria
- */
+
 public class TechnicianWorkAreaJPanel extends javax.swing.JPanel {
 
     /**
