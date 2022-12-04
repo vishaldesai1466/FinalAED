@@ -23,7 +23,7 @@ public abstract class Organization {
     
     public enum Type{
         Donor("Donor"), MainOffice("Main Office"),Inventory("Inventory"), ServiceCenter("ServiceCenter"), 
-        Recycling("Recycling"), Transport("Transport"), StoreChain("StoreChain"), Store("Store"), Admin("Admin");
+        Recycling("Recycling"), Transport("Transport"), StoreChain("StoreChain"), Store("Store"), Admin("Admin"), Technician("Technician");
         private String value;
         private Type(String value) {
             this.value = value;
