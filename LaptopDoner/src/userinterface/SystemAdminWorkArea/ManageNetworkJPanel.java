@@ -6,9 +6,16 @@
 package userinterface.SystemAdminWorkArea;
 
 import Business.EcoSystem;
+import Business.Enterprise.RecyclingCenterEnterprise;
+import Business.Enterprise.Enterprise;
+import Business.Enterprise.InspectionCenterEnterprise;
+import Business.Enterprise.MainCenterEnterprise;
+import Business.Enterprise.TransportAgencyEnterprise;
 import Business.Network.Network;
+import Business.Organization.Organization;
 import java.awt.CardLayout;
 import java.awt.Component;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -52,12 +59,13 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         backJButton = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(153, 255, 255));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        networkJTable.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
         networkJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null},
-                {null},
-                {null},
-                {null}
+
             },
             new String [] {
                 "Name"
@@ -80,65 +88,79 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(networkJTable);
 
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 404, 91));
+
+        submitJButton.setBackground(new java.awt.Color(255, 51, 0));
+        submitJButton.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
         submitJButton.setText("Submit");
         submitJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 submitJButtonActionPerformed(evt);
             }
         });
+        add(submitJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 180, -1, -1));
 
+        nameJTextField.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
+        add(nameJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 140, 160, -1));
+
+        jLabel1.setFont(new java.awt.Font("Lucida Calligraphy", 1, 12)); // NOI18N
         jLabel1.setText("Name");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, -1, -1));
 
+        backJButton.setBackground(new java.awt.Color(255, 51, 0));
+        backJButton.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
         backJButton.setText("<< Back");
         backJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backJButtonActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(166, 166, 166)
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(nameJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
-                .addComponent(submitJButton)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(backJButton)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 404, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(110, 110, 110))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(63, 63, 63)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(99, 99, 99)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(submitJButton)
-                    .addComponent(nameJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(backJButton)
-                .addGap(76, 76, 76))
-        );
+        add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void submitJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitJButtonActionPerformed
-
+        boolean nameFlag=false;
         String name = nameJTextField.getText();
+        if(name.isEmpty() ) {
+            nameFlag=true;
+            JOptionPane.showMessageDialog(null, "Please enter network name","Error",JOptionPane.ERROR_MESSAGE);
+        }
+        if (!nameFlag){
+            Network network = system.createAndAddNetwork();
+            network.setName(name);
+            network.getEnterpriseDirectory().createAndAddEnterprise("Main Center",Enterprise.EnterpriseType.MainCenter);
+            network.getEnterpriseDirectory().createAndAddEnterprise("Inspection Center",Enterprise.EnterpriseType.InspectionCenter);
+            network.getEnterpriseDirectory().createAndAddEnterprise("Recycling Center",Enterprise.EnterpriseType.RecyclingCenter);
+            network.getEnterpriseDirectory().createAndAddEnterprise("Transport Agency",Enterprise.EnterpriseType.TransportAgency);
 
-        Network network = system.createAndAddNetwork();
-        network.setName(name);
-
-        populateNetworkTable();
+            for(Enterprise enterprise: network.getEnterpriseDirectory().getEnterpriseList())  
+            {
+                if(enterprise instanceof MainCenterEnterprise)
+                {
+                   enterprise.getOrganizationDirectory().createOrganization(Organization.Type.StoreChain);
+                   enterprise.getOrganizationDirectory().createOrganization(Organization.Type.Donor);
+                   enterprise.getOrganizationDirectory().createOrganization(Organization.Type.MainOffice);
+                   enterprise.getOrganizationDirectory().createOrganization(Organization.Type.Inventory);
+                }
+                else if(enterprise instanceof InspectionCenterEnterprise)
+                {
+                   enterprise.getOrganizationDirectory().createOrganization(Organization.Type.ServiceCenter);
+                   enterprise.getOrganizationDirectory().createOrganization(Organization.Type.Technician);
+                } 
+                else if(enterprise instanceof TransportAgencyEnterprise)
+                {
+                   enterprise.getOrganizationDirectory().createOrganization(Organization.Type.Transport);
+                   enterprise.getOrganizationDirectory().createOrganization(Organization.Type.Driver);
+                } 
+                else if(enterprise instanceof RecyclingCenterEnterprise)
+                {
+                   enterprise.getOrganizationDirectory().createOrganization(Organization.Type.Recycling);
+                } 
+            }
+            JOptionPane.showMessageDialog(null, "Network added successfully.");
+            nameJTextField.setText("");
+            populateNetworkTable();
+        }      
     }//GEN-LAST:event_submitJButtonActionPerformed
 
     private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
