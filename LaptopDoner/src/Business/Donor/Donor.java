@@ -9,8 +9,9 @@ package Business.Donor;
 public class Donor {
      private String name;
      private String emailId;
-     private long phoneNo;
+     private String phoneNo;
      private String type;
+     private int donationAmount;
      
     private int id;
     private static int count = 1;
@@ -24,6 +25,23 @@ public class Donor {
         return id;
     }
 
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public int getDonationAmount() {
+        return donationAmount;
+    }
+
+    public void setDonationAmount(int donationAmount) {
+        this.donationAmount = donationAmount;
+    }
+
+    
     public void setName(String name) {
         this.name = name;
     }
@@ -41,19 +59,12 @@ public class Donor {
         this.emailId = emailId;
     }
 
-    public long getPhoneNo() {
+    public String getPhoneNo() {
         return phoneNo;
     }
 
-    public void setPhoneNo(long phoneNo) {
+    public void setPhoneNo(String phoneNo) {
         this.phoneNo = phoneNo;
-    }
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
     }
 
     
