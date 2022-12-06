@@ -40,7 +40,7 @@ public class EnterpriseDirectory {
             enterprise=new TransportAgencyEnterprise(name);
             enterpriseList.add(enterprise);
         }
-        //return enterprise;
+       // return enterprise;
     }
     
 }
