@@ -7,6 +7,7 @@ package Business.Role;
 
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
+import Business.Network.Network;
 import Business.Organization.Organization;
 import Business.Organization.Transport;
 import Business.UserAccount.UserAccount;
@@ -17,8 +18,8 @@ import userinterface.TransportManagerRole.TransportManagerWorkAreaJPanel;
 public class TransportManagerRole extends Role {
 
     @Override
-    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business) {
-    return new TransportManagerWorkAreaJPanel(userProcessContainer, account, (Transport)organization, enterprise);
+    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, Network network) {
+        return new TransportManagerWorkAreaJPanel(userProcessContainer, account, (Transport)organization, enterprise, business,network);
     }
     
 }
