@@ -5,9 +5,12 @@
  */
 package userinterface.OfficeManagerRole;
 
+import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
+import Business.Network.Network;
 import Business.Organization.MainOffice;
 import Business.UserAccount.UserAccount;
+import Business.WorkQueue.LaptopWorkRequest;
 import Business.WorkQueue.MainOfficeWorkRequest;
 import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
@@ -16,36 +19,47 @@ import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
 public class OfficeManagerWorkAreaJPanel extends javax.swing.JPanel {
+
     private JPanel userProcessContainer;
     private MainOffice organization;
     private Enterprise enterprise;
     private UserAccount userAccount;
+    private EcoSystem business;
+    private Network network;
+
     /**
      * Creates new form OfficeManagerWorkAreaJPanel
      */
-    public OfficeManagerWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, MainOffice organization, Enterprise enterprise) {
+    public OfficeManagerWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, MainOffice organization, Enterprise enterprise, EcoSystem business, Network network) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.organization = organization;
         this.enterprise = enterprise;
         this.userAccount = account;
+        this.business = business;
+        this.network = network;
         populateRequestTable();
     }
-     public void populateRequestTable(){
+
+    public void populateRequestTable() {
         DefaultTableModel model = (DefaultTableModel) mainOfficeJTable.getModel();
-        
+
         model.setRowCount(0);
-        for (WorkRequest request : userAccount.getWorkQueue().getWorkRequestList()){
-            Object[] row = new Object[4];
-            row[0] = request.getMessage();
-            row[1] = request.getReceiver();
-            row[2] = request.getStatus();
-            String result = ((MainOfficeWorkRequest) request).getTestResult();
-            row[3] = result == null ? "Waiting" : result;
-            
+        for (WorkRequest request : organization.getWorkQueue().getWorkRequestList()) {
+            Object[] row = new Object[5];
+            row[0] = request;
+            row[1] = request.getStatus();
+            int quantity = ((LaptopWorkRequest) request).getQuantity();
+            row[2] = quantity;
+            String location = ((LaptopWorkRequest) request).getLocation();
+            row[3] = location;
+            String result = ((LaptopWorkRequest) request).getTestResult();
+            row[4] = result == null ? "Waiting" : result;
+
             model.addRow(row);
         }
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -59,18 +73,20 @@ public class OfficeManagerWorkAreaJPanel extends javax.swing.JPanel {
         mainOfficeJTable = new javax.swing.JTable();
         btnRefresh = new javax.swing.JButton();
         btnRequestWork = new javax.swing.JButton();
-        btnProcess = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(153, 255, 255));
+
+        mainOfficeJTable.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
         mainOfficeJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Message", "Receiver", "Status", "Result"
+                "Message", "Status", "Quantity", "Location", "Result"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -78,13 +94,9 @@ public class OfficeManagerWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
         jScrollPane1.setViewportView(mainOfficeJTable);
-        if (mainOfficeJTable.getColumnModel().getColumnCount() > 0) {
-            mainOfficeJTable.getColumnModel().getColumn(0).setResizable(false);
-            mainOfficeJTable.getColumnModel().getColumn(1).setResizable(false);
-            mainOfficeJTable.getColumnModel().getColumn(2).setResizable(false);
-            mainOfficeJTable.getColumnModel().getColumn(3).setResizable(false);
-        }
 
+        btnRefresh.setBackground(new java.awt.Color(255, 51, 0));
+        btnRefresh.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
         btnRefresh.setText("Refresh");
         btnRefresh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -92,17 +104,12 @@ public class OfficeManagerWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnRequestWork.setBackground(new java.awt.Color(255, 51, 0));
+        btnRequestWork.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
         btnRequestWork.setText("Request Work");
         btnRequestWork.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRequestWorkActionPerformed(evt);
-            }
-        });
-
-        btnProcess.setText("Process");
-        btnProcess.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnProcessActionPerformed(evt);
             }
         });
 
@@ -111,54 +118,25 @@ public class OfficeManagerWorkAreaJPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(103, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(90, 90, 90))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnProcess)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnRequestWork))
-                            .addComponent(btnRefresh))
-                        .addGap(61, 61, 61))))
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnRequestWork)
+                    .addComponent(btnRefresh)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(215, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(31, 31, 31)
+                .addGap(18, 18, 18)
                 .addComponent(btnRefresh)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnRequestWork)
-                    .addComponent(btnProcess))
-                .addContainerGap(45, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnRequestWork)
+                .addContainerGap(268, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnProcessActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProcessActionPerformed
-        // TODO add your handling code here:
-        int selectedRow = mainOfficeJTable.getSelectedRow();
-
-        if (selectedRow >= 0) {
-            MainOfficeWorkRequest request = (MainOfficeWorkRequest) mainOfficeJTable.getValueAt(selectedRow, 0);
-
-            request.setStatus("Processing");
-
-            ProcessWorkRequestJPanel processWorkRequestJPanel = new ProcessWorkRequestJPanel(userProcessContainer, request);
-            userProcessContainer.add("processWorkRequestJPanel", processWorkRequestJPanel);
-            CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-            layout.next(userProcessContainer);
-
-        } else {
-            JOptionPane.showMessageDialog(null, "Please select a request message to process.");
-            return;
-        }
-    }//GEN-LAST:event_btnProcessActionPerformed
 
     private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshActionPerformed
         // TODO add your handling code here:
@@ -167,14 +145,26 @@ public class OfficeManagerWorkAreaJPanel extends javax.swing.JPanel {
 
     private void btnRequestWorkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRequestWorkActionPerformed
         // TODO add your handling code here:
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        userProcessContainer.add("RequestWorkJPanel", new RequestWorkJPanel(userProcessContainer, userAccount, enterprise));
-        layout.next(userProcessContainer);
+        int selectedRow = mainOfficeJTable.getSelectedRow();
+
+        if (selectedRow >= 0) {
+            LaptopWorkRequest request = (LaptopWorkRequest) mainOfficeJTable.getValueAt(selectedRow, 0);
+            if(!request.getStatus().equalsIgnoreCase("Laptop Delivered")){
+                // request.setStatus("Request sent to transport");
+                CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+                userProcessContainer.add("RequestWorkJPanel", new RequestWorkJPanel(userProcessContainer, userAccount, enterprise, organization, business, request, network));
+                layout.next(userProcessContainer);
+            } else {
+                JOptionPane.showMessageDialog(null, "Invalid request"); 
+            } 
+        } else {
+            JOptionPane.showMessageDialog(null, "Please select a request message to process.");
+            return;
+        }
     }//GEN-LAST:event_btnRequestWorkActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnProcess;
     private javax.swing.JButton btnRefresh;
     private javax.swing.JButton btnRequestWork;
     private javax.swing.JScrollPane jScrollPane1;
