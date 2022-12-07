@@ -5,14 +5,9 @@
  */
 package Business.Organization;
 
-import Business.Role.TechnicianRole;
 import Business.Role.Role;
 import java.util.ArrayList;
 
-/**
- *
- * @author Aadesh Randeria
- */
 public class Technician extends Organization {
 
     public Technician() {
@@ -22,7 +17,7 @@ public class Technician extends Organization {
     @Override
     public ArrayList<Role> getSupportedRole() {
         ArrayList<Role> roles = new ArrayList();
-        roles.add(new TechnicianRole());
+        roles.add(new Business.Role.TechnicianRole());
         return roles;
     }
     

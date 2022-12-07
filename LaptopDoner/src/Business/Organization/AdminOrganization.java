@@ -9,7 +9,10 @@ import Business.Role.AdminRole;
 import Business.Role.Role;
 import java.util.ArrayList;
 
-
+/**
+ *
+ * @author HP
+ */
 public class AdminOrganization extends Organization {
 
     public AdminOrganization() {

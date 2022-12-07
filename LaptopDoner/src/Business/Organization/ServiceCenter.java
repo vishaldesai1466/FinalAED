@@ -10,7 +10,6 @@ import Business.Role.ServiceCenterManagerRole;
 import Business.Role.Role;
 import java.util.ArrayList;
 
-
 public class ServiceCenter extends Organization {
 
     public ServiceCenter() {
@@ -20,8 +19,7 @@ public class ServiceCenter extends Organization {
     @Override
     public ArrayList<Role> getSupportedRole() {
         ArrayList<Role> roles = new ArrayList();
-        roles.add(new ServiceCenterManagerRole());       
-        roles.add(new TechnicianRole());
+        roles.add(new ServiceCenterManagerRole());
         return roles;
     }
     

@@ -7,7 +7,6 @@ package Business.Organization;
 
 import java.util.ArrayList;
 
-
 public class OrganizationDirectory {
     private ArrayList<Organization> organizationList;
     
@@ -22,10 +21,8 @@ public class OrganizationDirectory {
     public void setOrganizationList(ArrayList<Organization> organizationList) {
         this.organizationList = organizationList;
     }
-    
     public Organization createOrganization(Organization.Type type){
         Organization organization = null;
-        
         if (type.getValue().equals(Organization.Type.Donor.getValue())){
             organization = new DonorOrganization();
             organizationList.add(organization);
@@ -33,6 +30,14 @@ public class OrganizationDirectory {
         else if (type.getValue().equals(Organization.Type.ServiceCenter.getValue())){
             organization = new ServiceCenter();
             organizationList.add(organization);
+        }
+        else if (type.getValue().equals(Organization.Type.Technician.getValue())){
+            organization = new Technician();
+            organizationList.add(organization);
+        }
+        else if (type.getValue().equals(Organization.Type.StoreChain.getValue())){
+              organization = new StoreChain();
+              organizationList.add(organization);
         }
         else if (type.getValue().equals(Organization.Type.MainOffice.getValue())){
             organization = new MainOffice();
@@ -50,10 +55,12 @@ public class OrganizationDirectory {
             organization = new Transport();
             organizationList.add(organization);
         }
-        
-        
+        else if (type.getValue().equals(Organization.Type.Driver.getValue())){
+            organization = new Driver();
+            organizationList.add(organization);
+        }
         return organization;
-    
-    
     }
+    
+    
 }

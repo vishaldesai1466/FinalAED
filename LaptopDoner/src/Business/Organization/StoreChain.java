@@ -11,7 +11,6 @@ import Business.Role.StoreChainManagerRole;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-
 public class StoreChain extends Organization{
 
     private ArrayList<Store> storeChain;

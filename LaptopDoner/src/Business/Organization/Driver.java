@@ -9,7 +9,6 @@ import Business.Role.DriverRole;
 import Business.Role.Role;
 import java.util.ArrayList;
 
-
 public class Driver extends Organization {
 
     public Driver() {

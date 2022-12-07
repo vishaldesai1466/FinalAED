@@ -9,7 +9,6 @@ import Business.Role.DonorRole;
 import Business.Role.Role;
 import java.util.ArrayList;
 
-
 public class DonorOrganization extends Organization{
     public DonorOrganization() {
         super(Organization.Type.Donor.getValue());

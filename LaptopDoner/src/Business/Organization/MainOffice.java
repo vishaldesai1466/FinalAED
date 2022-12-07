@@ -9,7 +9,6 @@ import Business.Role.OfficeManagerRole;
 import Business.Role.Role;
 import java.util.ArrayList;
 
-
 public class MainOffice extends Organization{
     
     public MainOffice(){

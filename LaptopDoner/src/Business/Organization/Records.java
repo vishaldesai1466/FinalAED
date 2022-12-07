@@ -7,7 +7,6 @@ package Business.Organization;
 
 import java.util.Date;
 
-
 public class Records {
     private Date requestDate;
     private int laptopDonated;
