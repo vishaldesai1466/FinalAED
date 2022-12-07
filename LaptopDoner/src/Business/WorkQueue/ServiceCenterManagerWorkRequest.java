@@ -5,7 +5,6 @@
  */
 package Business.WorkQueue;
 
-
 public class ServiceCenterManagerWorkRequest extends WorkRequest {
     private String testResult;
     private int quantity;

@@ -8,7 +8,6 @@ package Business.WorkQueue;
 import Business.Organization.Driver;
 import Business.UserAccount.UserAccount;
 
-
 public class DriverWorkRequest extends WorkRequest {
     private String testResult;
     private UserAccount driverName;

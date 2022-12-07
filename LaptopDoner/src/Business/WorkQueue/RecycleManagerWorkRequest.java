@@ -7,11 +7,10 @@ package Business.WorkQueue;
 
 import Business.UserAccount.UserAccount;
 
-public class TechnicianWorkRequest extends WorkRequest {
+public class RecycleManagerWorkRequest extends WorkRequest {
     private String testResult;
-    private UserAccount labAssistantName;
+    private UserAccount recycleManagerName;
     private int quantity;
-    private String location;
 
     public String getTestResult() {
         return testResult;
@@ -21,12 +20,12 @@ public class TechnicianWorkRequest extends WorkRequest {
         this.testResult = testResult;
     }
 
-    public UserAccount getTechnicianName() {
-        return labAssistantName;
+    public UserAccount getRecycleManagerName() {
+        return recycleManagerName;
     }
 
-    public void setTechnicianName(UserAccount labAssistantName) {
-        this.labAssistantName = labAssistantName;
+    public void setRecycleManagerName(UserAccount recycleManagerName) {
+        this.recycleManagerName = recycleManagerName;
     }
 
     public int getQuantity() {
@@ -35,13 +34,5 @@ public class TechnicianWorkRequest extends WorkRequest {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
-    }
-
-    public String getLocation() {
-        return location;
-    }
-
-    public void setLocation(String location) {
-        this.location = location;
     }
 }

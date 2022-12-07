@@ -15,7 +15,6 @@ import Business.Organization.Organization;
 import Business.Organization.StoreChain;
 import java.util.HashMap;
 
-
 public class Network {
     private String name;
     private EnterpriseDirectory enterpriseDirectory;

@@ -9,6 +9,7 @@ public class MainOfficeWorkRequest extends WorkRequest{
     private String testResult;
     private int quantity;
     private String location;
+   
 
     public String getTestResult() {
         return testResult;

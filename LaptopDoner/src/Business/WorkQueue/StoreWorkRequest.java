@@ -7,7 +7,6 @@ package Business.WorkQueue;
 
 import Business.UserAccount.UserAccount;
 
-
 public class StoreWorkRequest extends WorkRequest{
     private int quantity;
     private String result;
