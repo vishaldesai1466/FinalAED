@@ -5,19 +5,64 @@
  */
 package userinterface.RecycleManagerRole;
 
+import Business.EcoSystem;
+import Business.Enterprise.Enterprise;
+import Business.Network.Network;
+import Business.Organization.Recycling;
+import Business.Organization.ServiceCenter;
+import Business.Organization.RecordList;
+import Business.Organization.Records;
+import Business.UserAccount.UserAccount;
+import Business.WorkQueue.RecycleManagerWorkRequest;
+import Business.WorkQueue.DriverWorkRequest;
+import Business.WorkQueue.LaptopWorkRequest;
+import Business.WorkQueue.ServiceCenterManagerWorkRequest;
+import Business.WorkQueue.WorkRequest;
+import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 public class RecycleManagerWorkAreaJPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form RecycleManagerWorkAreaJPanel
      */
-    JPanel userProcessContainer;
-    public RecycleManagerWorkAreaJPanel(JPanel userProcessContainer) {
+    private JPanel userProcessContainer;
+    private UserAccount account;
+    private Recycling organization;
+    private EcoSystem business;
+    private Network network;
+
+    public RecycleManagerWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, Recycling organization, EcoSystem business, Network network) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
+        this.account = account;
+        this.organization = organization;
+        this.business = business;
+        this.network = network;
+        txtItemsComposed.setText(Integer.toString(organization.getItemsComposed()));
+        populateRequestTable();
     }
+
+    public void populateRequestTable() {
+        DefaultTableModel model = (DefaultTableModel) tblRecycleManager.getModel();
+
+        model.setRowCount(0);
+        for (WorkRequest request : organization.getWorkQueue().getWorkRequestList()) {
+            Object[] row = new Object[4];
+            row[0] = request;
+            row[1] = request.getStatus();
+            int quantity = ((LaptopWorkRequest) request).getQuantity();
+            row[2] = quantity;
+
+            String result = ((LaptopWorkRequest) request).getTestResult();
+            row[3] = result == null ? "Waiting" : result;
+
+            model.addRow(row);
+        }
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -29,10 +74,17 @@ public class RecycleManagerWorkAreaJPanel extends javax.swing.JPanel {
 
         btnRefresh = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblCompostManager = new javax.swing.JTable();
+        tblRecycleManager = new javax.swing.JTable();
         btnProcess = new javax.swing.JButton();
         btnBack = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        txtItemsComposed = new javax.swing.JTextField();
+        btnDaily = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(153, 255, 255));
+
+        btnRefresh.setBackground(new java.awt.Color(255, 51, 0));
+        btnRefresh.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
         btnRefresh.setText("Refresh");
         btnRefresh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -40,12 +92,13 @@ public class RecycleManagerWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
-        tblCompostManager.setModel(new javax.swing.table.DefaultTableModel(
+        tblRecycleManager.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
+        tblRecycleManager.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Message", "Receiver", "Status", "Result"
+                "Message", "Status", "Quantity", "Result"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -56,8 +109,10 @@ public class RecycleManagerWorkAreaJPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(tblCompostManager);
+        jScrollPane1.setViewportView(tblRecycleManager);
 
+        btnProcess.setBackground(new java.awt.Color(255, 51, 0));
+        btnProcess.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
         btnProcess.setText("Process");
         btnProcess.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -65,7 +120,24 @@ public class RecycleManagerWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnBack.setBackground(new java.awt.Color(255, 51, 0));
+        btnBack.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
         btnBack.setText("Back");
+
+        jLabel1.setFont(new java.awt.Font("Lucida Calligraphy", 1, 12)); // NOI18N
+        jLabel1.setText("Items Recycled ");
+
+        txtItemsComposed.setEditable(false);
+        txtItemsComposed.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
+
+        btnDaily.setBackground(new java.awt.Color(255, 51, 0));
+        btnDaily.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
+        btnDaily.setText("Daily Submission");
+        btnDaily.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDailyActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -73,45 +145,103 @@ public class RecycleManagerWorkAreaJPanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(28, 28, 28)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addComponent(btnBack)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
                         .addGap(18, 18, 18)
-                        .addComponent(btnProcess))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
-                .addComponent(btnRefresh)
-                .addContainerGap(98, Short.MAX_VALUE))
+                        .addComponent(txtItemsComposed, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnBack)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnProcess)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnDaily))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(28, 28, 28)
+                        .addComponent(btnRefresh)))
+                .addContainerGap(86, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(67, 67, 67)
+                .addGap(32, 32, 32)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(txtItemsComposed, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnRefresh))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnBack)
-                    .addComponent(btnProcess))
-                .addContainerGap(257, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnDaily)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnBack)
+                        .addComponent(btnProcess)))
+                .addContainerGap(256, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshActionPerformed
         // TODO add your handling code here:
+        populateRequestTable();
+        txtItemsComposed.setText(Integer.toString(organization.getItemsComposed()));
     }//GEN-LAST:event_btnRefreshActionPerformed
 
     private void btnProcessActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProcessActionPerformed
         // TODO add your handling code here:
+        int selectedRow = tblRecycleManager.getSelectedRow();
+
+        if (selectedRow >= 0) {
+            LaptopWorkRequest request = (LaptopWorkRequest) tblRecycleManager.getValueAt(selectedRow, 0);
+            if (!request.getStatus().equalsIgnoreCase("Laptop Decomposed")) {
+
+                request.setStatus("Processing");
+
+                ProcessWorkRequestJPanel processWorkRequestJPanel = new ProcessWorkRequestJPanel(userProcessContainer, request, organization, network);
+                userProcessContainer.add("ProcessWorkRequestJPanel", processWorkRequestJPanel);
+                CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+                layout.next(userProcessContainer);
+            } else {
+                JOptionPane.showMessageDialog(null, "Invalid request");
+            }
+
+        } else {
+            JOptionPane.showMessageDialog(null, "Please select a request message to process.");
+            return;
+        }
     }//GEN-LAST:event_btnProcessActionPerformed
+
+    private void btnDailyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDailyActionPerformed
+        // TODO add your handling code here:
+        int ans = JOptionPane.showConfirmDialog(null, "Really want to add?", "Warning", JOptionPane.YES_NO_OPTION);
+        if (ans == 0) {
+            int finalItemsDecomposed = organization.getItemsComposed();
+            Records records = new Records();
+            records.setLaptopDecomposed(finalItemsDecomposed);
+            records.setRequestDate(business.getCurrentDate());
+            System.out.println("current date" + business.getCurrentDate());
+            //            RecordList list=new RecordList();
+            //            list.addRecords(records);
+            //            organization.setRecordList(list);
+            organization.getRecordList().addRecords(records);
+            organization.setItemsComposed(0);
+            txtItemsComposed.setText(String.valueOf(organization.getItemsComposed()));
+            JOptionPane.showMessageDialog(null, "Daily Records Submitted Successfully");
+        }
+    }//GEN-LAST:event_btnDailyActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
+    private javax.swing.JButton btnDaily;
     private javax.swing.JButton btnProcess;
     private javax.swing.JButton btnRefresh;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tblCompostManager;
+    private javax.swing.JTable tblRecycleManager;
+    private javax.swing.JTextField txtItemsComposed;
     // End of variables declaration//GEN-END:variables
 }
