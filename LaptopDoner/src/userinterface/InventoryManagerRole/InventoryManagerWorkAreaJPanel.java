@@ -5,14 +5,21 @@
  */
 package userinterface.InventoryManagerRole;
 
+import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
+import Business.Network.Network;
 import Business.Organization.Inventory;
 import Business.Organization.MainOffice;
+import Business.Organization.RecordList;
+import Business.Organization.Records;
 import Business.UserAccount.UserAccount;
+import Business.WorkQueue.LaptopWorkRequest;
 import Business.WorkQueue.InventoryWorkRequest;
 import Business.WorkQueue.MainOfficeWorkRequest;
+import Business.WorkQueue.StoreWorkRequest;
 import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
+import java.util.Random;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -27,25 +34,37 @@ public class InventoryManagerWorkAreaJPanel extends javax.swing.JPanel {
     private Inventory organization;
     private Enterprise enterprise;
     private UserAccount userAccount;
-    public InventoryManagerWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, Inventory organization, Enterprise enterprise) {
+    private Network network;
+    private EcoSystem business;
+    public InventoryManagerWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, Inventory organization, Enterprise enterprise,Network network, EcoSystem business) {
         initComponents();
+        this.business=business;
         this.userProcessContainer = userProcessContainer;
         this.organization = organization;
         this.enterprise = enterprise;
         this.userAccount = account;
+        this.network=network;
+        txtStock.setText(Integer.toString(organization.getStock()));
+        txtGiveAway.setText(Integer.toString(organization.getGiveAway()));
+        if(organization.getStock()<20){
+            btnGiveAway.setEnabled(false);
+        }
         populateRequestTable();
     }
     public void populateRequestTable(){
         DefaultTableModel model = (DefaultTableModel) tblInventory.getModel();
         
         model.setRowCount(0);
-        for (WorkRequest request : userAccount.getWorkQueue().getWorkRequestList()){
-            Object[] row = new Object[4];
-            row[0] = request.getMessage();
-            row[1] = request.getReceiver();
-            row[2] = request.getStatus();
-            String result = ((InventoryWorkRequest) request).getTestResult();
-            row[3] = result == null ? "Waiting" : result;
+        for (WorkRequest request : organization.getWorkQueue().getWorkRequestList()){
+            Object[] row = new Object[5];
+            row[0] = request;
+            row[1] = request.getStatus();
+            int quantity = ((LaptopWorkRequest) request).getQuantity();
+            row[2] = quantity;
+            String location = ((LaptopWorkRequest) request).getLocation();
+            row[3] = location;
+            String result = ((LaptopWorkRequest) request).getTestResult();
+            row[4] = result == null ? "Waiting" : result;
             
             model.addRow(row);
         }
@@ -62,19 +81,28 @@ public class InventoryManagerWorkAreaJPanel extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblInventory = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnRequestWork = new javax.swing.JButton();
         btnProcess = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        txtStock = new javax.swing.JTextField();
+        btnGiveAway = new javax.swing.JButton();
+        btnDailySub = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        txtGiveAway = new javax.swing.JTextField();
 
+        setBackground(new java.awt.Color(153, 255, 255));
+
+        tblInventory.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
         tblInventory.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Message", "Receiver", "Status", "Result"
+                "Message", "Status", "Quantity", "Location", "Result"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -82,17 +110,22 @@ public class InventoryManagerWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
         jScrollPane1.setViewportView(tblInventory);
-        if (tblInventory.getColumnModel().getColumnCount() > 0) {
-            tblInventory.getColumnModel().getColumn(0).setResizable(false);
-            tblInventory.getColumnModel().getColumn(1).setResizable(false);
-            tblInventory.getColumnModel().getColumn(2).setResizable(false);
-            tblInventory.getColumnModel().getColumn(3).setResizable(false);
-        }
 
+        jButton1.setBackground(new java.awt.Color(255, 51, 0));
+        jButton1.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
         jButton1.setText("Refresh");
 
-        jButton2.setText("Request Work");
+        btnRequestWork.setBackground(new java.awt.Color(255, 51, 0));
+        btnRequestWork.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
+        btnRequestWork.setText("Request ServiceCenter");
+        btnRequestWork.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRequestWorkActionPerformed(evt);
+            }
+        });
 
+        btnProcess.setBackground(new java.awt.Color(255, 51, 0));
+        btnProcess.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
         btnProcess.setText("Process");
         btnProcess.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -100,36 +133,95 @@ public class InventoryManagerWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Lucida Calligraphy", 1, 12)); // NOI18N
+        jLabel1.setText("Stock:");
+
+        txtStock.setEditable(false);
+        txtStock.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
+        txtStock.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtStockActionPerformed(evt);
+            }
+        });
+
+        btnGiveAway.setBackground(new java.awt.Color(255, 51, 0));
+        btnGiveAway.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
+        btnGiveAway.setText("Give Away");
+        btnGiveAway.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGiveAwayActionPerformed(evt);
+            }
+        });
+
+        btnDailySub.setBackground(new java.awt.Color(255, 51, 0));
+        btnDailySub.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
+        btnDailySub.setText("Daily Submission");
+        btnDailySub.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDailySubActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setFont(new java.awt.Font("Lucida Calligraphy", 1, 12)); // NOI18N
+        jLabel2.setText("Give Away:");
+
+        txtGiveAway.setEditable(false);
+        txtGiveAway.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(67, 67, 67))
             .addGroup(layout.createSequentialGroup()
-                .addGap(105, 105, 105)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnGiveAway)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnProcess)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton2))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(144, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtStock, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(54, 54, 54)
+                                .addComponent(jLabel2)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtGiveAway, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnProcess, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(249, 249, 249)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(13, 13, 13)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(btnDailySub, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnRequestWork, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jButton1)
+                                .addGap(1, 1, 1))))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 493, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(46, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addComponent(jButton1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jLabel1)
+                    .addComponent(txtStock, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2)
+                    .addComponent(txtGiveAway, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
+                    .addComponent(btnRequestWork)
                     .addComponent(btnProcess))
-                .addContainerGap(59, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnGiveAway)
+                    .addComponent(btnDailySub))
+                .addContainerGap(212, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -138,12 +230,12 @@ public class InventoryManagerWorkAreaJPanel extends javax.swing.JPanel {
         int selectedRow = tblInventory.getSelectedRow();
 
         if (selectedRow >= 0) {
-            MainOfficeWorkRequest request = (MainOfficeWorkRequest) tblInventory.getValueAt(selectedRow, 0);
+            LaptopWorkRequest request = (LaptopWorkRequest) tblInventory.getValueAt(selectedRow, 0);
 
             request.setStatus("Processing");
 
-            userinterface.OfficeManagerRole.ProcessWorkRequestJPanel processWorkRequestJPanel = new userinterface.OfficeManagerRole.ProcessWorkRequestJPanel(userProcessContainer, request);
-            userProcessContainer.add("processWorkRequestJPanel", processWorkRequestJPanel);
+            ProcessWorkRequestJPanel processWorkRequestJPanel = new ProcessWorkRequestJPanel(userProcessContainer, network, request, organization);
+            userProcessContainer.add("processWorkRequestIJPanel", processWorkRequestJPanel);
             CardLayout layout = (CardLayout) userProcessContainer.getLayout();
             layout.next(userProcessContainer);
 
@@ -152,13 +244,80 @@ public class InventoryManagerWorkAreaJPanel extends javax.swing.JPanel {
             return;
         }
     }//GEN-LAST:event_btnProcessActionPerformed
+    public void refreshButton(){
+        txtStock.setText(String.valueOf(organization.getStock()));
+    }
+    private void txtStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtStockActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtStockActionPerformed
+
+    private void btnRequestWorkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRequestWorkActionPerformed
+        // TODO add your handling code here:
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        userProcessContainer.add("RequestWorkJPanel", new RequestWorkJPanel(userProcessContainer, userAccount,organization, enterprise, network));
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_btnRequestWorkActionPerformed
+
+    private void btnDailySubActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDailySubActionPerformed
+        // TODO add your handling code here:
+        int ans = JOptionPane.showConfirmDialog(null, "Really want to add?","Warning", JOptionPane.YES_NO_OPTION);
+        if (ans == 0) {
+            int finalStock=organization.getFinalStock();
+            int giveAwaycount= organization.getGiveAway();
+            Records records=new Records();
+            records.setLaptopDonated(finalStock);
+            records.setLaptopGiven(giveAwaycount);
+            records.setRequestDate(business.getCurrentDate());
+    //        RecordList list=new RecordList();
+    //        list.addRecords(records);
+    //        organization.setRecordList(list);
+            organization.getRecordList().addRecords(records);
+            JOptionPane.showMessageDialog(null, "Daily Records Submitted Successfully");
+        }                   
+    }//GEN-LAST:event_btnDailySubActionPerformed
+    public static int randInt(int min, int max) {
+
+        // Usually this can be a field rather than a method variable
+        Random rand = new Random();
+
+        // nextInt is normally exclusive of the top value,
+        // so add 1 to make it inclusive
+        int randomNum = rand.nextInt((max - min) + 1) + min;
+
+        return randomNum;
+    }
+    private void btnGiveAwayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGiveAwayActionPerformed
+        // TODO add your handling code here:
+        int stock=organization.getStock();
+        int giveAway=randInt(1,stock-20);
+        int count= stock-giveAway;
+        if(count<0){
+            JOptionPane.showMessageDialog(null, "Not enough stock available for give away");
+        }
+        else{
+        int existingGiveAway=organization.getGiveAway();
+        int total=giveAway+existingGiveAway;
+        organization.setGiveAway(total);
+        int totalStock=stock-giveAway;
+        organization.setStock(totalStock);
+        txtStock.setText(String.valueOf(totalStock));
+        txtGiveAway.setText(String.valueOf(total));
+        JOptionPane.showMessageDialog(null, "Laptop Successfully donated to NGOs and Old-Aged Homes");
+        }
+    }//GEN-LAST:event_btnGiveAwayActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnDailySub;
+    private javax.swing.JButton btnGiveAway;
     private javax.swing.JButton btnProcess;
+    private javax.swing.JButton btnRequestWork;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblInventory;
+    private javax.swing.JTextField txtGiveAway;
+    private javax.swing.JTextField txtStock;
     // End of variables declaration//GEN-END:variables
 }

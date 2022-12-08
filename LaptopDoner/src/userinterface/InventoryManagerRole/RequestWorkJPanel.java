@@ -5,14 +5,39 @@
  */
 package userinterface.InventoryManagerRole;
 
+import Business.EcoSystem;
+import Business.Enterprise.Enterprise;
+import Business.Enterprise.InspectionCenterEnterprise;
+import Business.Network.Network;
+import Business.Organization.Inventory;
+import Business.Organization.ServiceCenter;
+import Business.Organization.Organization;
+import Business.UserAccount.UserAccount;
+import Business.Validations;
+import Business.WorkQueue.LaptopWorkRequest;
+import Business.WorkQueue.ServiceCenterManagerWorkRequest;
+import java.awt.CardLayout;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+
 
 public class RequestWorkJPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form RequestWorkJPanel
      */
-    public RequestWorkJPanel() {
+    private JPanel userProcessContainer;
+    private Inventory organization;
+    private Enterprise enterprise;
+    private UserAccount userAccount;
+    private Network network;
+    public RequestWorkJPanel(JPanel userProcessContainer, UserAccount account, Inventory organization, Enterprise enterprise,Network business) {
         initComponents();
+        this.userProcessContainer = userProcessContainer;
+        this.organization = organization;
+        this.enterprise = enterprise;
+        this.userAccount = account;
+        this.network=business;
     }
 
     /**
@@ -26,62 +51,143 @@ public class RequestWorkJPanel extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
         txtMessage = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        btnRequestWork = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        txtQuantity = new javax.swing.JTextField();
 
+        setBackground(new java.awt.Color(153, 255, 255));
+
+        jLabel1.setFont(new java.awt.Font("Lucida Calligraphy", 1, 12)); // NOI18N
         jLabel1.setText("Message: ");
 
-        jButton1.setText("Request Work");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        txtMessage.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
+
+        btnRequestWork.setBackground(new java.awt.Color(255, 51, 0));
+        btnRequestWork.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
+        btnRequestWork.setText("Request Work");
+        btnRequestWork.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnRequestWorkActionPerformed(evt);
             }
         });
 
+        jButton2.setBackground(new java.awt.Color(255, 51, 0));
+        jButton2.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
         jButton2.setText("<< Back");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setFont(new java.awt.Font("Lucida Calligraphy", 1, 12)); // NOI18N
+        jLabel2.setText("Quantity:");
+
+        txtQuantity.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(98, 98, 98))
             .addGroup(layout.createSequentialGroup()
-                .addGap(57, 57, 57)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton2)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
+                        .addComponent(jButton2)
                         .addGap(18, 18, 18)
-                        .addComponent(txtMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(156, Short.MAX_VALUE))
+                        .addComponent(btnRequestWork))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtMessage)
+                            .addComponent(txtQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(364, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(45, 45, 45)
+                .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(txtMessage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(44, 44, 44)
-                .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
-                .addComponent(jButton2)
-                .addGap(101, 101, 101))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(txtQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton2)
+                    .addComponent(btnRequestWork))
+                .addContainerGap(373, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnRequestWorkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRequestWorkActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+        boolean msgFlag = false;
+        boolean qtyFlag = false;
+        if (txtMessage.getText().isEmpty()) {
+            msgFlag = true;
+            JOptionPane.showMessageDialog(null, "Please enter your message", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        if (txtQuantity.getText().isEmpty()) {
+            qtyFlag = true;
+            JOptionPane.showMessageDialog(null, "Please enter quantity", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        if (!Validations.isDigit(txtQuantity.getText())) {
+            qtyFlag = true;
+            JOptionPane.showMessageDialog(null, "Please enter quantity as integer", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        if (!msgFlag & !qtyFlag){
+            if(Integer.parseInt(txtQuantity.getText())>organization.getStock()) {
+                JOptionPane.showMessageDialog(null, "Stock does not contain number of items entered", "Error", JOptionPane.ERROR_MESSAGE);
+            } else {
+                LaptopWorkRequest request=new LaptopWorkRequest();
+                request.setMessage(txtMessage.getText());
+                request.setStatus("Sent to lab");
+                request.setQuantity(Integer.parseInt(txtQuantity.getText()));
+                Enterprise en = null;
+                Organization org = null;
+                for(Enterprise e : network.getEnterpriseDirectory().getEnterpriseList()){
+                    if(e instanceof InspectionCenterEnterprise){
+                        en=e;
+                        for(Organization o : en.getOrganizationDirectory().getOrganizationList()){
+                            if(o instanceof ServiceCenter){
+                                org=o;
+                                break;
+                            }
+                        }
+                        if(org!=null){
+                            org.getWorkQueue().getWorkRequestList().add(request);
+                            userAccount.getWorkQueue().getWorkRequestList().add(request);
+                            JOptionPane.showMessageDialog(null, "Request sent successfully.");
+                            txtMessage.setText("");
+                            txtQuantity.setText("");
+                        }
+                    }
+                }
+            }
+        }
+    }//GEN-LAST:event_btnRequestWorkActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        userProcessContainer.remove(this);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnRequestWork;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JTextField txtMessage;
+    private javax.swing.JTextField txtQuantity;
     // End of variables declaration//GEN-END:variables
 }
