@@ -10,8 +10,14 @@ import Business.Enterprise.Enterprise;
 import Business.Organization.ServiceCenter;
 import Business.Organization.Technician;
 import Business.UserAccount.UserAccount;
+import Business.WorkQueue.LaptopWorkRequest;
+import Business.WorkQueue.TechnicianWorkRequest;
+import Business.WorkQueue.ServiceCenterManagerWorkRequest;
+import Business.WorkQueue.WorkRequest;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-
+import javax.swing.table.DefaultTableModel;
+import java.awt.CardLayout;
 
 public class TechnicianWorkAreaJPanel extends javax.swing.JPanel {
 
@@ -23,6 +29,7 @@ public class TechnicianWorkAreaJPanel extends javax.swing.JPanel {
     private Technician lab;
     private Enterprise enterprise;
     private EcoSystem business;
+    ServiceCenterManagerWorkRequest request; 
     public TechnicianWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, Technician lab, Enterprise enterprise, EcoSystem business) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
@@ -30,6 +37,27 @@ public class TechnicianWorkAreaJPanel extends javax.swing.JPanel {
         this.lab = lab;
         this.enterprise = enterprise;
         this.business = business;
+        
+        populateRequestTable();
+    }
+    
+    public void populateRequestTable() {
+        DefaultTableModel model = (DefaultTableModel) tblManageWorkQueue.getModel();
+        
+        model.setRowCount(0);
+        for (WorkRequest request : account.getWorkQueue().getWorkRequestList()){
+            Object[] row = new Object[4];
+            row[0] = request;
+//            System.out.println("Request"+request.getMessage());
+           // row[1] = ((ServiceCenterWorkRequest) request).getTechnicianName();
+            row[1] = request.getStatus();
+            int quantity = ((LaptopWorkRequest) request).getQuantity();
+            row[2] = quantity;
+            String result = ((LaptopWorkRequest) request).getTestResult();
+            row[3] = result == null ? "Waiting" : result;
+            
+            model.addRow(row);
+        }
     }
 
     /**
@@ -43,20 +71,22 @@ public class TechnicianWorkAreaJPanel extends javax.swing.JPanel {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         tblManageWorkQueue = new javax.swing.JTable();
-        btnBack = new javax.swing.JButton();
         btnProcess = new javax.swing.JButton();
         btnRefresh1 = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(153, 255, 255));
+
+        tblManageWorkQueue.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
         tblManageWorkQueue.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Message", "Receiver", "Status", "Quantity", "Location", "Result"
+                "Message", "Status", "Quantity", "Result"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -65,8 +95,8 @@ public class TechnicianWorkAreaJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblManageWorkQueue);
 
-        btnBack.setText("Back");
-
+        btnProcess.setBackground(new java.awt.Color(255, 51, 0));
+        btnProcess.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
         btnProcess.setText("Process");
         btnProcess.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -74,6 +104,8 @@ public class TechnicianWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnRefresh1.setBackground(new java.awt.Color(255, 51, 0));
+        btnRefresh1.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
         btnRefresh1.setText("Refresh");
         btnRefresh1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -92,11 +124,8 @@ public class TechnicianWorkAreaJPanel extends javax.swing.JPanel {
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btnRefresh1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnBack)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnProcess)))
-                .addContainerGap(49, Short.MAX_VALUE))
+                    .addComponent(btnProcess))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -106,24 +135,40 @@ public class TechnicianWorkAreaJPanel extends javax.swing.JPanel {
                     .addComponent(btnRefresh1)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnBack)
-                    .addComponent(btnProcess))
-                .addContainerGap(343, Short.MAX_VALUE))
+                .addComponent(btnProcess)
+                .addContainerGap(341, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnProcessActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProcessActionPerformed
         // TODO add your handling code here:
+        int selectedRow = tblManageWorkQueue.getSelectedRow();        
+        
+        if (selectedRow >= 0) {
+            LaptopWorkRequest request = (LaptopWorkRequest) tblManageWorkQueue.getValueAt(selectedRow, 0);
+            if(!request.getStatus().equalsIgnoreCase("Laptop Decomposed")){
+                request.setStatus("Processing");
+
+                ProcessWorkRequestJPanel processWorkRequestJPanel = new ProcessWorkRequestJPanel(userProcessContainer, request);
+                userProcessContainer.add("pwrjp", processWorkRequestJPanel);
+                CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+                layout.next(userProcessContainer);
+            } else {
+                JOptionPane.showMessageDialog(null, "Invalid request"); 
+            }
+        } else {
+           JOptionPane.showMessageDialog(null, "Please select a request message to process."); 
+            return;
+        }
     }//GEN-LAST:event_btnProcessActionPerformed
 
     private void btnRefresh1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefresh1ActionPerformed
         // TODO add your handling code here:
+        populateRequestTable();
     }//GEN-LAST:event_btnRefresh1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnBack;
     private javax.swing.JButton btnProcess;
     private javax.swing.JButton btnRefresh1;
     private javax.swing.JScrollPane jScrollPane1;
