@@ -7,14 +7,20 @@ package userinterface.TransportManagerRole;
 
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
+import Business.Network.Network;
 import Business.Organization.DonorOrganization;
+import Business.Organization.Driver;
 import Business.Organization.Transport;
 import Business.UserAccount.UserAccount;
+import Business.WorkQueue.LaptopWorkRequest;
 import Business.WorkQueue.MainOfficeWorkRequest;
 import Business.WorkQueue.TransportWorkRequest;
 import Business.WorkQueue.WorkRequest;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import java.awt.CardLayout;
 import javax.swing.table.DefaultTableModel;
+
 
 public class ManageWorkQueueJPanel extends javax.swing.JPanel {
     private JPanel userProcessContainer;
@@ -22,16 +28,18 @@ public class ManageWorkQueueJPanel extends javax.swing.JPanel {
     private Enterprise enterprise;
     private UserAccount userAccount;
     private EcoSystem business;
+    private Network network;
     /**
      * Creates new form ManageWorkQueueJPanel
      */
-    public ManageWorkQueueJPanel(JPanel userProcessContainer, UserAccount account, Transport organization, Enterprise enterprise, EcoSystem business) {
+    public ManageWorkQueueJPanel(JPanel userProcessContainer, UserAccount account, Transport organization, Enterprise enterprise, EcoSystem business, Network network) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.organization = organization;
         this.enterprise = enterprise;
         this.userAccount = account;
         this.business= business;
+        this.network=network;
         populateRequestTable();
     }
     public void populateRequestTable(){
@@ -39,16 +47,15 @@ public class ManageWorkQueueJPanel extends javax.swing.JPanel {
         
         model.setRowCount(0);
         for (WorkRequest request : organization.getWorkQueue().getWorkRequestList()){
-            Object[] row = new Object[6];
+            Object[] row = new Object[5];
             row[0] = request;
-            row[1] = request.getReceiver();
-            row[2] = request.getStatus();
-            int quantity = ((TransportWorkRequest) request).getQuantity();
-            row[3] = quantity;
-            String location = ((TransportWorkRequest) request).getLocation();
-            row[4]=location;
-            String result = ((TransportWorkRequest) request).getTestResult();
-            row[5] = result == null ? "Waiting" : result;
+            row[1] = request.getStatus();
+            int quantity = ((LaptopWorkRequest) request).getQuantity();
+            row[2] = quantity;
+            String location = ((LaptopWorkRequest) request).getLocation();
+            row[3]=location;
+            String result = ((LaptopWorkRequest) request).getTestResult();
+            row[4] = result == null ? "Waiting" : result;
             
             model.addRow(row);
         }
@@ -66,19 +73,21 @@ public class ManageWorkQueueJPanel extends javax.swing.JPanel {
         tblManageWorkQueue = new javax.swing.JTable();
         btnRefresh = new javax.swing.JButton();
         btnBack = new javax.swing.JButton();
-        btnProcess = new javax.swing.JButton();
         btnRequest = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(173, 255, 255));
+
+        tblManageWorkQueue.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
         tblManageWorkQueue.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Message", "Receiver", "Status", "Result"
+                "Message", "Status", "Quantity", "Location", "Result"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -87,6 +96,8 @@ public class ManageWorkQueueJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblManageWorkQueue);
 
+        btnRefresh.setBackground(new java.awt.Color(255, 51, 0));
+        btnRefresh.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
         btnRefresh.setText("Refresh");
         btnRefresh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -94,11 +105,23 @@ public class ManageWorkQueueJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnBack.setBackground(new java.awt.Color(255, 51, 0));
+        btnBack.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
         btnBack.setText("Back");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
 
-        btnProcess.setText("Process");
-
+        btnRequest.setBackground(new java.awt.Color(255, 51, 0));
+        btnRequest.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
         btnRequest.setText("Request Test");
+        btnRequest.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRequestActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -113,11 +136,9 @@ public class ManageWorkQueueJPanel extends javax.swing.JPanel {
                         .addComponent(btnRefresh))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnBack)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnProcess)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnRequest)))
-                .addContainerGap(49, Short.MAX_VALUE))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -129,9 +150,8 @@ public class ManageWorkQueueJPanel extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnBack)
-                    .addComponent(btnProcess)
                     .addComponent(btnRequest))
-                .addContainerGap(343, Short.MAX_VALUE))
+                .addContainerGap(341, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -140,10 +160,38 @@ public class ManageWorkQueueJPanel extends javax.swing.JPanel {
         populateRequestTable();
     }//GEN-LAST:event_btnRefreshActionPerformed
 
+    private void btnRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRequestActionPerformed
+        // TODO add your handling code here:
+        int selectedRow = tblManageWorkQueue.getSelectedRow();       
+        
+        if (selectedRow >= 0) {
+            LaptopWorkRequest request = (LaptopWorkRequest) tblManageWorkQueue.getValueAt(selectedRow, 0);
+            if(!request.getStatus().equalsIgnoreCase("Laptop Delivered")){
+                request.setStatus("Processing");
+
+                RequestTestJPanel rtjp = new RequestTestJPanel(userProcessContainer, organization, request, userAccount, business, network);
+                userProcessContainer.add("RequestTestJPanel", rtjp);
+                CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+                layout.next(userProcessContainer);
+            } else {
+                JOptionPane.showMessageDialog(null, "Invalid request"); 
+            } 
+        } else {
+            JOptionPane.showMessageDialog(null, "Please select a message to request."); 
+            return;
+        }
+    }//GEN-LAST:event_btnRequestActionPerformed
+
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        // TODO add your handling code here:
+        userProcessContainer.remove(this);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
+    }//GEN-LAST:event_btnBackActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
-    private javax.swing.JButton btnProcess;
     private javax.swing.JButton btnRefresh;
     private javax.swing.JButton btnRequest;
     private javax.swing.JScrollPane jScrollPane1;
