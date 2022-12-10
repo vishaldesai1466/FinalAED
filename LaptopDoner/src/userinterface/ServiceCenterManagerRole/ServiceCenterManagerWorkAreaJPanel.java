@@ -5,7 +5,9 @@
  */
 package userinterface.ServiceCenterManagerRole;
 
+import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
+import Business.Network.Network;
 import Business.Organization.ServiceCenter;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
@@ -21,12 +23,14 @@ public class ServiceCenterManagerWorkAreaJPanel extends javax.swing.JPanel {
     private UserAccount account;
     private ServiceCenter organization;
     private Enterprise enterprise;
-    public ServiceCenterManagerWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, ServiceCenter organization, Enterprise enterprise) {
+    private Network network;
+    public ServiceCenterManagerWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, ServiceCenter organization, Enterprise enterprise, Network network) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.account = account;
         this.organization = organization;
         this.enterprise = enterprise;
+        this.network=network;
     }
 
     /**
@@ -43,9 +47,13 @@ public class ServiceCenterManagerWorkAreaJPanel extends javax.swing.JPanel {
         btnUserAccount = new javax.swing.JButton();
         btnWorkQueue = new javax.swing.JButton();
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        setBackground(new java.awt.Color(153, 255, 255));
+
+        jLabel1.setFont(new java.awt.Font("Lucida Calligraphy", 1, 14)); // NOI18N
         jLabel1.setText("My Work Area - ServiceCenter Manager Role");
 
+        btnManageTechnician.setBackground(new java.awt.Color(255, 51, 0));
+        btnManageTechnician.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
         btnManageTechnician.setText("Manage Technician");
         btnManageTechnician.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -53,6 +61,8 @@ public class ServiceCenterManagerWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnUserAccount.setBackground(new java.awt.Color(255, 51, 0));
+        btnUserAccount.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
         btnUserAccount.setText("Manage User Account");
         btnUserAccount.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -60,7 +70,14 @@ public class ServiceCenterManagerWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnWorkQueue.setBackground(new java.awt.Color(255, 51, 0));
+        btnWorkQueue.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
         btnWorkQueue.setText("Manage Work Queue");
+        btnWorkQueue.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnWorkQueueActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -73,7 +90,7 @@ public class ServiceCenterManagerWorkAreaJPanel extends javax.swing.JPanel {
                     .addComponent(btnManageTechnician)
                     .addComponent(btnUserAccount)
                     .addComponent(btnWorkQueue))
-                .addContainerGap(241, Short.MAX_VALUE))
+                .addContainerGap(202, Short.MAX_VALUE))
         );
 
         layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnManageTechnician, btnUserAccount, btnWorkQueue});
@@ -89,13 +106,13 @@ public class ServiceCenterManagerWorkAreaJPanel extends javax.swing.JPanel {
                 .addComponent(btnUserAccount)
                 .addGap(18, 18, 18)
                 .addComponent(btnWorkQueue)
-                .addContainerGap(313, Short.MAX_VALUE))
+                .addContainerGap(309, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnManageTechnicianActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageTechnicianActionPerformed
         // TODO add your handling code here:
-        ManageTechnicianJPanel mlajp = new ManageTechnicianJPanel(userProcessContainer, account, organization, enterprise);
+        ManageTechnicianJPanel mlajp = new ManageTechnicianJPanel(userProcessContainer, enterprise.getOrganizationDirectory());
         userProcessContainer.add("ManageTechnicianJPanel", mlajp);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
@@ -103,7 +120,19 @@ public class ServiceCenterManagerWorkAreaJPanel extends javax.swing.JPanel {
 
     private void btnUserAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUserAccountActionPerformed
         // TODO add your handling code here:
+        ManageUserAccountJPanel muajp = new ManageUserAccountJPanel(userProcessContainer, enterprise);
+        userProcessContainer.add("ManageUserAccountJPanel", muajp);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
     }//GEN-LAST:event_btnUserAccountActionPerformed
+
+    private void btnWorkQueueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnWorkQueueActionPerformed
+        // TODO add your handling code here:
+        ManageWorkQueueJPanel mwqtjp = new ManageWorkQueueJPanel(userProcessContainer, account, organization, enterprise, network);
+        userProcessContainer.add("ManageWorkQueueJPanel", mwqtjp);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_btnWorkQueueActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
