@@ -5,29 +5,46 @@
  */
 package userinterface.TransportManagerRole;
 
+import Business.EcoSystem;
+import Business.Employee.Employee;
 import Business.Enterprise.Enterprise;
+import Business.Organization.Organization;
+import Business.Organization.OrganizationDirectory;
 import Business.Organization.Transport;
+import Business.Role.DriverRole;
+import Business.Role.Role;
+import Business.Role.TransportManagerRole;
 import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
 import java.awt.CardLayout;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 public class ManageDriverJPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form ManageDriverJPanel
      */
+    private OrganizationDirectory organizationDir;
     private JPanel userProcessContainer;
-    private Transport organization;
-    private Enterprise enterprise;
-    private UserAccount userAccount;
-    public ManageDriverJPanel(JPanel userProcessContainer, UserAccount userAccount, Transport organization, Enterprise enterprise) {
+    public ManageDriverJPanel(JPanel userProcessContainer, OrganizationDirectory organizationDir) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
-        this.userAccount = userAccount;
-        this.organization = organization;
-        this.enterprise = enterprise;
+        this.organizationDir = organizationDir;
+        populateOrganizationJComboBox();
+        populateOrganizationEmpJComboBox();
+        
     }
-
+    public void populateTable(Organization organization) {
+        DefaultTableModel model = (DefaultTableModel) tblDriver.getModel();
+        model.setRowCount(0);
+        for(Employee employee: organization.getEmployeeDirectory().getEmployeeList()) {
+            Object[] row = new Object[2];
+            row[0] = employee.getId();
+            row[1] = employee.getName();
+            model.addRow(row);
+        }        
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -43,7 +60,14 @@ public class ManageDriverJPanel extends javax.swing.JPanel {
         txtName = new javax.swing.JTextField();
         btnBack = new javax.swing.JButton();
         btnCreate = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        organizationJComboBox = new javax.swing.JComboBox();
+        organizationEmpJComboBox = new javax.swing.JComboBox();
+        jLabel3 = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(173, 255, 255));
+
+        tblDriver.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
         tblDriver.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -62,8 +86,13 @@ public class ManageDriverJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblDriver);
 
+        jLabel1.setFont(new java.awt.Font("Lucida Calligraphy", 1, 12)); // NOI18N
         jLabel1.setText("Name:");
 
+        txtName.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
+
+        btnBack.setBackground(new java.awt.Color(255, 51, 0));
+        btnBack.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
         btnBack.setText("Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -71,7 +100,34 @@ public class ManageDriverJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnCreate.setBackground(new java.awt.Color(255, 51, 0));
+        btnCreate.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
         btnCreate.setText("Create Driver");
+        btnCreate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCreateActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setFont(new java.awt.Font("Lucida Calligraphy", 1, 12)); // NOI18N
+        jLabel2.setText("Organization:");
+
+        organizationJComboBox.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
+        organizationJComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                organizationJComboBoxActionPerformed(evt);
+            }
+        });
+
+        organizationEmpJComboBox.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
+        organizationEmpJComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                organizationEmpJComboBoxActionPerformed(evt);
+            }
+        });
+
+        jLabel3.setFont(new java.awt.Font("Lucida Calligraphy", 1, 12)); // NOI18N
+        jLabel3.setText("Organization:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -80,31 +136,50 @@ public class ManageDriverJPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 580, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnBack)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnCreate)))
-                .addContainerGap(138, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnBack)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnCreate))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addGap(30, 30, 30)
+                                .addComponent(organizationJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel1))
+                                .addGap(32, 32, 32)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(organizationEmpJComboBox, 0, 173, Short.MAX_VALUE)
+                                    .addComponent(txtName))))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(38, 38, 38)
+                .addGap(22, 22, 22)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(organizationJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
+                .addGap(35, 35, 35)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(organizationEmpJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(36, 36, 36)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnBack)
                     .addComponent(btnCreate))
-                .addContainerGap(262, Short.MAX_VALUE))
+                .addContainerGap(204, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -115,12 +190,58 @@ public class ManageDriverJPanel extends javax.swing.JPanel {
         layout.previous(userProcessContainer);
     }//GEN-LAST:event_btnBackActionPerformed
 
+    private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
+        // TODO add your handling code here:
+        boolean nameFlag=false;
+        if(txtName.getText().isEmpty() )
+        {
+            nameFlag=true;
+            JOptionPane.showMessageDialog(null, "Please enter your full name","Error", JOptionPane.ERROR_MESSAGE);
+        }
+        if (!nameFlag){
+            Organization organization = (Organization) organizationEmpJComboBox.getSelectedItem();
+            String name = txtName.getText();
+            organization.getEmployeeDirectory().createEmployee(name);
+            populateTable(organization);
+            JOptionPane.showMessageDialog(null, "Driver created successfully.");
+            txtName.setText("");
+        }
+    }//GEN-LAST:event_btnCreateActionPerformed
+    public void populateOrganizationJComboBox() {
+        organizationJComboBox.removeAllItems();
+        for(Organization organization: organizationDir.getOrganizationList()) {
+            organizationJComboBox.addItem(organization);
+        }
+    }  
+    public void populateOrganizationEmpJComboBox() {
+        organizationEmpJComboBox.removeAllItems();
+        for(Organization organization: organizationDir.getOrganizationList()) {
+            organizationEmpJComboBox.addItem(organization);
+        }
+    }
+    private void organizationJComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_organizationJComboBoxActionPerformed
+        // TODO add your handling code here:
+        Organization organization = (Organization) organizationJComboBox.getSelectedItem();
+        if(organization!=null) {
+            populateTable(organization);
+        }
+    }//GEN-LAST:event_organizationJComboBoxActionPerformed
+
+    private void organizationEmpJComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_organizationEmpJComboBoxActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_organizationEmpJComboBoxActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnCreate;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JComboBox organizationEmpJComboBox;
+    private javax.swing.JComboBox organizationJComboBox;
     private javax.swing.JTable tblDriver;
     private javax.swing.JTextField txtName;
     // End of variables declaration//GEN-END:variables
