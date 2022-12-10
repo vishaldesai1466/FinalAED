@@ -5,19 +5,64 @@
  */
 package userinterface.ServiceCenterManagerRole;
 
-/**
- *
- * @author Aadesh Randeria
- */
+import Business.EcoSystem;
+import Business.Enterprise.RecyclingCenterEnterprise;
+import Business.Enterprise.Enterprise;
+import Business.Network.Network;
+import Business.Organization.Recycling;
+import Business.Organization.ServiceCenter;
+import Business.Organization.Organization;
+import Business.UserAccount.UserAccount;
+import Business.WorkQueue.RecycleManagerWorkRequest;
+import Business.WorkQueue.LaptopWorkRequest;
+import Business.WorkQueue.InventoryWorkRequest;
+import Business.WorkQueue.ServiceCenterManagerWorkRequest;
+import Business.WorkQueue.WorkRequest;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import java.awt.CardLayout;
+import javax.swing.table.DefaultTableModel;
+import userinterface.RecycleManagerRole.RecycleManagerWorkAreaJPanel;
+
+
 public class ManageWorkQueueJPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form ManageWorkQueueJPanel
      */
-    public ManageWorkQueueJPanel() {
+    private JPanel userProcessContainer;
+    private ServiceCenter organization;
+    private Enterprise enterprise;
+    private UserAccount account;
+    private Network network;
+//    private LaptopWorkRequest request;
+    ManageWorkQueueJPanel(JPanel userProcessContainer, UserAccount account, ServiceCenter organization, Enterprise enterprise, Network network) {
         initComponents();
+        this.userProcessContainer = userProcessContainer;
+        this.organization = organization;
+        this.enterprise = enterprise;
+        this.account = account;
+        this.network=network;
+        populateRequestTable();
     }
-
+    public void populateRequestTable(){
+        DefaultTableModel model = (DefaultTableModel) tblManageWorkQueue.getModel();
+        
+        model.setRowCount(0);
+        for (WorkRequest request : organization.getWorkQueue().getWorkRequestList()){
+            Object[] row = new Object[4];
+            row[0] = request;
+            row[1] = request.getStatus();
+            int quantity = ((LaptopWorkRequest) request).getQuantity();
+            row[2] = quantity;
+            
+            String result = ((LaptopWorkRequest) request).getTestResult();
+            row[3] = result == null ? "Waiting" : result;
+         //   this.request=(ServiceCenterWorkRequest)request;
+            
+            model.addRow(row);
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -31,15 +76,18 @@ public class ManageWorkQueueJPanel extends javax.swing.JPanel {
         tblManageWorkQueue = new javax.swing.JTable();
         btnRefresh = new javax.swing.JButton();
         btnBack = new javax.swing.JButton();
-        btnProcess = new javax.swing.JButton();
         btnRequest = new javax.swing.JButton();
+        btnRecycling = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(153, 255, 255));
+
+        tblManageWorkQueue.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
         tblManageWorkQueue.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Message", "Receiver", "Status", "Result"
+                "Message", "Status", "Quantity", "Result"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -52,13 +100,41 @@ public class ManageWorkQueueJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblManageWorkQueue);
 
+        btnRefresh.setBackground(new java.awt.Color(255, 51, 0));
+        btnRefresh.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
         btnRefresh.setText("Refresh");
+        btnRefresh.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRefreshActionPerformed(evt);
+            }
+        });
 
+        btnBack.setBackground(new java.awt.Color(255, 51, 0));
+        btnBack.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
         btnBack.setText("Back");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
 
-        btnProcess.setText("Process");
-
+        btnRequest.setBackground(new java.awt.Color(255, 51, 0));
+        btnRequest.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
         btnRequest.setText("Request Test");
+        btnRequest.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRequestActionPerformed(evt);
+            }
+        });
+
+        btnRecycling.setBackground(new java.awt.Color(255, 51, 0));
+        btnRecycling.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
+        btnRecycling.setText("Send for Recycling");
+        btnRecycling.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRecyclingActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -73,11 +149,11 @@ public class ManageWorkQueueJPanel extends javax.swing.JPanel {
                         .addComponent(btnRefresh))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnBack)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnProcess)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnRequest)))
-                .addContainerGap(49, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnRequest)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnRecycling)))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -89,16 +165,93 @@ public class ManageWorkQueueJPanel extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnBack)
-                    .addComponent(btnProcess)
-                    .addComponent(btnRequest))
-                .addContainerGap(343, Short.MAX_VALUE))
+                    .addComponent(btnRequest)
+                    .addComponent(btnRecycling))
+                .addContainerGap(341, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshActionPerformed
+        // TODO add your handling code here:
+        populateRequestTable();
+    }//GEN-LAST:event_btnRefreshActionPerformed
+
+    private void btnRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRequestActionPerformed
+        // TODO add your handling code here:
+        int selectedRow = tblManageWorkQueue.getSelectedRow();       
+        
+        if (selectedRow >= 0) {
+            
+            LaptopWorkRequest request = (LaptopWorkRequest) tblManageWorkQueue.getValueAt(selectedRow, 0);
+            if(!request.getStatus().equalsIgnoreCase("Laptop Decomposed")){
+                request.setStatus("Processing");
+
+                RequestTestJPanel rtjp = new RequestTestJPanel(userProcessContainer, organization, request, account, network);
+                userProcessContainer.add("RequestTestJPanel", rtjp);
+                CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+                layout.next(userProcessContainer);
+            } else {
+                JOptionPane.showMessageDialog(null, "Invalid request"); 
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Please select a message to request."); 
+            return;
+        }
+    }//GEN-LAST:event_btnRequestActionPerformed
+
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        // TODO add your handling code here:
+        userProcessContainer.remove(this);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
+    }//GEN-LAST:event_btnBackActionPerformed
+
+    private void btnRecyclingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRecyclingActionPerformed
+        // TODO add your handling code here:
+        int selectedRow = tblManageWorkQueue.getSelectedRow();       
+        
+        if (selectedRow >= 0) {
+            LaptopWorkRequest request = (LaptopWorkRequest) tblManageWorkQueue.getValueAt(selectedRow, 0);
+            if (request.getTestResult().equalsIgnoreCase("Bad Laptop")) {
+                request.setStatus("Processing");
+                //RecycleManagerWorkRequest recyclRequest = new RecycleManagerWorkRequest(); 
+                request.setMessage(request.getMessage());
+                request.setReceiver(request.getReceiver());
+                request.setQuantity(request.getQuantity());
+                request.setStatus("Sent");
+                request.setTestResult("Waiting");
+                Enterprise en= null;
+                for(Enterprise e : network.getEnterpriseDirectory().getEnterpriseList()){
+                    if(e instanceof RecyclingCenterEnterprise){
+                        en=e;
+                        Organization org=null;
+                        for(Organization o : en.getOrganizationDirectory().getOrganizationList()){
+                            if(o instanceof Recycling){
+                                org=o;
+                                break;
+
+                            }
+                        }
+                        if(org!=null){
+                            org.getWorkQueue().getWorkRequestList().add(request);
+                            account.getWorkQueue().getWorkRequestList().add(request);
+                        }
+                    }
+                }
+                JOptionPane.showMessageDialog(null, "Request Sent to Recycling Manager");
+            } else {
+                JOptionPane.showMessageDialog(null, "Invalid Request");
+            }        
+        } else {
+            JOptionPane.showMessageDialog(null, "Please select a message to send for recycling."); 
+            return;
+        }
+    }//GEN-LAST:event_btnRecyclingActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
-    private javax.swing.JButton btnProcess;
+    private javax.swing.JButton btnRecycling;
     private javax.swing.JButton btnRefresh;
     private javax.swing.JButton btnRequest;
     private javax.swing.JScrollPane jScrollPane1;
