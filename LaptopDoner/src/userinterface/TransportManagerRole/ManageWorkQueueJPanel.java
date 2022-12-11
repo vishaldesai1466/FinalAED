@@ -21,7 +21,6 @@ import javax.swing.JPanel;
 import java.awt.CardLayout;
 import javax.swing.table.DefaultTableModel;
 
-
 public class ManageWorkQueueJPanel extends javax.swing.JPanel {
     private JPanel userProcessContainer;
     private Transport organization;

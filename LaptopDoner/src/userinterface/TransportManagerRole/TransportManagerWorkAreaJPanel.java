@@ -5,9 +5,12 @@
  */
 package userinterface.TransportManagerRole;
 
+import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
+import Business.Network.Network;
 import Business.Organization.Transport;
 import Business.UserAccount.UserAccount;
+import java.awt.CardLayout;
 import javax.swing.JPanel;
 
 public class TransportManagerWorkAreaJPanel extends javax.swing.JPanel {
@@ -16,15 +19,20 @@ public class TransportManagerWorkAreaJPanel extends javax.swing.JPanel {
      * Creates new form DriverWorkAreaJPanel
      */
     private JPanel userProcessContainer;
-    private UserAccount account;
-    private Transport organization;
     private Enterprise enterprise;
-    public TransportManagerWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, Transport organization, Enterprise enterprise) {
+    private UserAccount account;
+    private EcoSystem business;
+    private Transport organization;
+    private Network network;
+    public TransportManagerWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, Transport organization, Enterprise enterprise, EcoSystem business, Network network) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
+        this.enterprise = enterprise;
         this.account = account;
         this.organization = organization;
-        this.enterprise = enterprise;
+        this.business = business;
+        this.network=network;
+//        System.out.println(organization.getName() + "Hai mera naam");
     }
 
     /**
@@ -42,9 +50,13 @@ public class TransportManagerWorkAreaJPanel extends javax.swing.JPanel {
         btnUserAccount = new javax.swing.JButton();
         btnWorkQueue = new javax.swing.JButton();
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel1.setText("My Work Area - Driver Role");
+        jPanel1.setBackground(new java.awt.Color(173, 255, 255));
 
+        jLabel1.setFont(new java.awt.Font("Lucida Calligraphy", 1, 14)); // NOI18N
+        jLabel1.setText("My Work Area - Transport Manager Role");
+
+        btnDriver.setBackground(new java.awt.Color(255, 51, 0));
+        btnDriver.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
         btnDriver.setText("Manage Driver");
         btnDriver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -52,21 +64,36 @@ public class TransportManagerWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnUserAccount.setBackground(new java.awt.Color(255, 51, 0));
+        btnUserAccount.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
         btnUserAccount.setText("Manage User Account");
+        btnUserAccount.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUserAccountActionPerformed(evt);
+            }
+        });
 
+        btnWorkQueue.setBackground(new java.awt.Color(255, 51, 0));
+        btnWorkQueue.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
         btnWorkQueue.setText("Manage Work Queue");
+        btnWorkQueue.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnWorkQueueActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
                     .addComponent(btnDriver)
                     .addComponent(btnUserAccount)
-                    .addComponent(btnWorkQueue))
-                .addGap(0, 329, Short.MAX_VALUE))
+                    .addComponent(btnWorkQueue)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 342, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(307, Short.MAX_VALUE))
         );
 
         jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnDriver, btnUserAccount, btnWorkQueue});
@@ -74,7 +101,7 @@ public class TransportManagerWorkAreaJPanel extends javax.swing.JPanel {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(30, 30, 30)
+                .addGap(21, 21, 21)
                 .addComponent(jLabel1)
                 .addGap(32, 32, 32)
                 .addComponent(btnDriver)
@@ -82,34 +109,49 @@ public class TransportManagerWorkAreaJPanel extends javax.swing.JPanel {
                 .addComponent(btnUserAccount)
                 .addGap(18, 18, 18)
                 .addComponent(btnWorkQueue)
-                .addContainerGap(311, Short.MAX_VALUE))
+                .addContainerGap(342, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 600, Short.MAX_VALUE)
+            .addGap(0, 659, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 500, Short.MAX_VALUE)
+            .addGap(0, 526, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnDriverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDriverActionPerformed
-        // TODO add your handling code here:
+        // TODO add your handling code here: 
+        ManageDriverJPanel mdjp = new ManageDriverJPanel(userProcessContainer, enterprise.getOrganizationDirectory());
+        userProcessContainer.add("ManageDriverJPanel", mdjp);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
     }//GEN-LAST:event_btnDriverActionPerformed
+
+    private void btnUserAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUserAccountActionPerformed
+        // TODO add your handling code here:
+        ManageUserAccountJPanel muajp = new ManageUserAccountJPanel(userProcessContainer, enterprise);
+        userProcessContainer.add("ManageUserAccountJPanel", muajp);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_btnUserAccountActionPerformed
+
+    private void btnWorkQueueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnWorkQueueActionPerformed
+        // TODO add your handling code here:
+//        System.out.println(organization.getName() + "is my name");
+        ManageWorkQueueJPanel mwqtjp = new ManageWorkQueueJPanel(userProcessContainer, account, organization, enterprise, business, network);
+        userProcessContainer.add("ManageWorkQueueJPanel", mwqtjp);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_btnWorkQueueActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
