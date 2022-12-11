@@ -4,9 +4,6 @@
  */
 package userinterface;
 
-//import Business.Ecosystem;
-//import Business.ConfigureASystem;
-//import Business.DB4OUtil.DB4OUtil;
 import Business.ConfigureASystem;
 import Business.DB4OUtil.DB4OUtil;
 import Business.EcoSystem;
@@ -26,7 +23,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-
+import userinterface.AnalysisMode.AnalysisMode;
 
 public class MainJFrame extends javax.swing.JFrame {
 

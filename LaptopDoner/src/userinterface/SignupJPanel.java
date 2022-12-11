@@ -20,7 +20,6 @@ import Business.Validations;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-
 public class SignupJPanel extends javax.swing.JPanel {
 
     /**
@@ -227,7 +226,7 @@ public class SignupJPanel extends javax.swing.JPanel {
               donor.setEmailId(txtEmail.getText());
               donor.setPhoneNo(txtPhoneno.getText());
               donor.setType(String.valueOf(typeComboBox.getSelectedItem()));
-              system.getDonorDirectory().getDonorList().add(donor);
+              system.getDonorDiresctory().getDonorList().add(donor);
               user.setDonor(donor);
              // Role role=Role.RoleType.Donor;
               user.setRole(new DonorRole());
