@@ -47,13 +47,16 @@ public class ServiceCenterManagerWorkAreaJPanel extends javax.swing.JPanel {
         btnUserAccount = new javax.swing.JButton();
         btnWorkQueue = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(153, 255, 255));
+        setBackground(new java.awt.Color(0, 0, 0));
 
+        jLabel1.setBackground(new java.awt.Color(51, 0, 51));
         jLabel1.setFont(new java.awt.Font("Lucida Calligraphy", 1, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 255, 50));
         jLabel1.setText("My Work Area - ServiceCenter Manager Role");
 
-        btnManageTechnician.setBackground(new java.awt.Color(255, 51, 0));
+        btnManageTechnician.setBackground(new java.awt.Color(51, 0, 51));
         btnManageTechnician.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
+        btnManageTechnician.setForeground(new java.awt.Color(0, 255, 50));
         btnManageTechnician.setText("Manage Technician");
         btnManageTechnician.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -61,8 +64,9 @@ public class ServiceCenterManagerWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
-        btnUserAccount.setBackground(new java.awt.Color(255, 51, 0));
+        btnUserAccount.setBackground(new java.awt.Color(51, 0, 51));
         btnUserAccount.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
+        btnUserAccount.setForeground(new java.awt.Color(0, 255, 50));
         btnUserAccount.setText("Manage User Account");
         btnUserAccount.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -70,8 +74,9 @@ public class ServiceCenterManagerWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
-        btnWorkQueue.setBackground(new java.awt.Color(255, 51, 0));
+        btnWorkQueue.setBackground(new java.awt.Color(51, 0, 51));
         btnWorkQueue.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
+        btnWorkQueue.setForeground(new java.awt.Color(0, 255, 50));
         btnWorkQueue.setText("Manage Work Queue");
         btnWorkQueue.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -84,13 +89,16 @@ public class ServiceCenterManagerWorkAreaJPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(304, 304, 304)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
                     .addComponent(btnManageTechnician)
                     .addComponent(btnUserAccount)
                     .addComponent(btnWorkQueue))
-                .addContainerGap(202, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(221, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(214, 214, 214))
         );
 
         layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnManageTechnician, btnUserAccount, btnWorkQueue});
@@ -98,15 +106,15 @@ public class ServiceCenterManagerWorkAreaJPanel extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addComponent(jLabel1)
-                .addGap(32, 32, 32)
+                .addGap(60, 60, 60)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(47, 47, 47)
                 .addComponent(btnManageTechnician)
                 .addGap(18, 18, 18)
                 .addComponent(btnUserAccount)
                 .addGap(18, 18, 18)
                 .addComponent(btnWorkQueue)
-                .addContainerGap(309, Short.MAX_VALUE))
+                .addContainerGap(334, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

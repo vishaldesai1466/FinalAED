@@ -25,6 +25,7 @@ import javax.xml.xpath.XPathExpression;
 import javax.xml.xpath.XPathFactory;
 import org.w3c.dom.Document;
 
+
 public class ManageStoresJPanel extends javax.swing.JPanel {
 
     /**
@@ -62,8 +63,9 @@ public class ManageStoresJPanel extends javax.swing.JPanel {
         latitudeTxt = new javax.swing.JTextField();
         longitudeTxt = new javax.swing.JTextField();
 
-        setBackground(new java.awt.Color(173, 255, 255));
+        setBackground(new java.awt.Color(0, 0, 0));
 
+        storesJTable.setBackground(new java.awt.Color(51, 0, 51));
         storesJTable.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
         storesJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -90,8 +92,9 @@ public class ManageStoresJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(storesJTable);
 
-        backJButton.setBackground(new java.awt.Color(255, 51, 0));
+        backJButton.setBackground(new java.awt.Color(51, 0, 51));
         backJButton.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
+        backJButton.setForeground(new java.awt.Color(0, 255, 50));
         backJButton.setText("<< Back");
         backJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -99,8 +102,9 @@ public class ManageStoresJPanel extends javax.swing.JPanel {
             }
         });
 
-        addJButton.setBackground(new java.awt.Color(255, 51, 0));
+        addJButton.setBackground(new java.awt.Color(51, 0, 51));
         addJButton.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
+        addJButton.setForeground(new java.awt.Color(0, 255, 50));
         addJButton.setText("Add Store");
         addJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -108,40 +112,56 @@ public class ManageStoresJPanel extends javax.swing.JPanel {
             }
         });
 
+        jLabel1.setBackground(new java.awt.Color(51, 0, 51));
         jLabel1.setFont(new java.awt.Font("Lucida Calligraphy", 1, 12)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 255, 50));
         jLabel1.setText("Name:");
 
+        jLabel2.setBackground(new java.awt.Color(51, 0, 51));
         jLabel2.setFont(new java.awt.Font("Lucida Calligraphy", 1, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 255, 50));
         jLabel2.setText("Location:");
 
+        nameTxt.setBackground(new java.awt.Color(51, 0, 51));
         nameTxt.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
+        nameTxt.setForeground(new java.awt.Color(0, 255, 50));
         nameTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nameTxtActionPerformed(evt);
             }
         });
 
+        locationTxt.setBackground(new java.awt.Color(51, 0, 51));
         locationTxt.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
+        locationTxt.setForeground(new java.awt.Color(0, 255, 50));
         locationTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 locationTxtActionPerformed(evt);
             }
         });
 
+        jLabel3.setBackground(new java.awt.Color(51, 0, 51));
         jLabel3.setFont(new java.awt.Font("Lucida Calligraphy", 1, 12)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 255, 50));
         jLabel3.setText("Latitude:");
 
+        jLabel4.setBackground(new java.awt.Color(51, 0, 51));
         jLabel4.setFont(new java.awt.Font("Lucida Calligraphy", 1, 12)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 255, 50));
         jLabel4.setText("Longitude:");
 
+        latitudeTxt.setBackground(new java.awt.Color(51, 0, 51));
         latitudeTxt.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
+        latitudeTxt.setForeground(new java.awt.Color(0, 255, 50));
         latitudeTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 latitudeTxtActionPerformed(evt);
             }
         });
 
+        longitudeTxt.setBackground(new java.awt.Color(51, 0, 51));
         longitudeTxt.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
+        longitudeTxt.setForeground(new java.awt.Color(0, 255, 50));
         longitudeTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 longitudeTxtActionPerformed(evt);
@@ -153,36 +173,37 @@ public class ManageStoresJPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(277, 277, 277)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(locationTxt, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 124, Short.MAX_VALUE)
-                                    .addComponent(nameTxt)
-                                    .addComponent(latitudeTxt, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 124, Short.MAX_VALUE)
-                                    .addComponent(longitudeTxt))))
-                        .addContainerGap(104, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(locationTxt, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(nameTxt)
+                            .addComponent(latitudeTxt, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(longitudeTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(backJButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(addJButton)
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addGap(20, 20, 20)))
+                .addContainerGap(314, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(21, 21, 21)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(nameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -202,7 +223,7 @@ public class ManageStoresJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(backJButton)
                     .addComponent(addJButton))
-                .addContainerGap(225, Short.MAX_VALUE))
+                .addContainerGap(219, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -286,32 +307,32 @@ public class ManageStoresJPanel extends javax.swing.JPanel {
         }
     }
 
-//    public static String[] getLatLongPositions(String address) throws Exception {
-//        int responseCode = 0;
-//        String api = "http://maps.googleapis.com/maps/api/geocode/xml?address=" + URLEncoder.encode(address, "UTF-8") + "&sensor=true";
-//        URL url = new URL(api); 
-//        HttpURLConnection httpConnection = (HttpURLConnection) url.openConnection();
-//        httpConnection.connect();
-//        responseCode = httpConnection.getResponseCode();
-//        if (responseCode == 200) {
-//            DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();;
-//            Document document = builder.parse(httpConnection.getInputStream());
-//            XPathFactory xPathfactory = XPathFactory.newInstance();
-//            XPath xpath = xPathfactory.newXPath();
-//            XPathExpression expr = xpath.compile("/GeocodeResponse/status");
-//            String status = (String) expr.evaluate(document, XPathConstants.STRING);
-//            if (status.equals("OK")) {
-//                expr = xpath.compile("//geometry/location/lat");
-//                String latitude = (String) expr.evaluate(document, XPathConstants.STRING);
-//                expr = xpath.compile("//geometry/location/lng");
-//                String longitude = (String) expr.evaluate(document, XPathConstants.STRING);
-//                return new String[]{latitude, longitude};
-//            } else {
-//                throw new Exception("Error from the API - response status: " + status);
-//            }
-//        }
-//        return null;
-//    }
+    public static String[] getLatLongPositions(String address) throws Exception {
+        int responseCode = 0;
+        String api = "http://maps.googleapis.com/maps/api/geocode/xml?address=AIzaSyCq12TgWNIPGQTRbeB8Lkh2E-rn939ikLM" + URLEncoder.encode(address, "UTF-8") + "&sensor=true";
+        URL url = new URL(api); 
+        HttpURLConnection httpConnection = (HttpURLConnection) url.openConnection();
+        httpConnection.connect();
+        responseCode = httpConnection.getResponseCode();
+        if (responseCode == 200) {
+            DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();;
+            Document document = builder.parse(httpConnection.getInputStream());
+            XPathFactory xPathfactory = XPathFactory.newInstance();
+            XPath xpath = xPathfactory.newXPath();
+            XPathExpression expr = xpath.compile("/GeocodeResponse/status");
+            String status = (String) expr.evaluate(document, XPathConstants.STRING);
+            if (status.equals("OK")) {
+                expr = xpath.compile("//geometry/location/lat");
+              String latitude = (String) expr.evaluate(document, XPathConstants.STRING);
+               expr = xpath.compile("//geometry/location/lng");
+               String longitude = (String) expr.evaluate(document, XPathConstants.STRING);
+             return new String[]{latitude, longitude};
+           } else {
+              throw new Exception("Error from the API - response status: " + status);
+           }
+       }
+        return null;
+    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
