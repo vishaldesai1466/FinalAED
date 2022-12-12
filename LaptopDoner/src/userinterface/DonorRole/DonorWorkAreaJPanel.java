@@ -5,6 +5,7 @@
  */
 package userinterface.DonorRole;
 
+import Business.Donor.Donor;
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Enterprise.MainCenterEnterprise;
@@ -12,7 +13,6 @@ import Business.Network.Network;
 import Business.Organization.DonorOrganization;
 import Business.Organization.MainOffice;
 import Business.Organization.Organization;
-import Business.Donor.Donor;
 import Business.Organization.Store;
 import Business.Organization.StoreChain;
 import Business.UserAccount.UserAccount;
@@ -23,6 +23,10 @@ import Business.WorkQueue.StoreWorkRequest;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+/**
+ *
+ * @author Apurva Sawant
+ */
 public class DonorWorkAreaJPanel extends javax.swing.JPanel {
 
     private JPanel userProcessContainer;
@@ -75,13 +79,16 @@ public class DonorWorkAreaJPanel extends javax.swing.JPanel {
         jLabel7 = new javax.swing.JLabel();
         comboBoxCity = new javax.swing.JComboBox<>();
 
-        setBackground(new java.awt.Color(153, 255, 255));
+        setBackground(new java.awt.Color(0, 0, 0));
+        setPreferredSize(new java.awt.Dimension(800, 600));
 
         jLabel1.setFont(new java.awt.Font("Lucida Calligraphy", 1, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 255, 50));
         jLabel1.setText("Wish to donate laptop? Just notify us!");
 
-        donateBtn.setBackground(new java.awt.Color(255, 51, 0));
+        donateBtn.setBackground(new java.awt.Color(51, 0, 51));
         donateBtn.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
+        donateBtn.setForeground(new java.awt.Color(0, 255, 50));
         donateBtn.setText("Donate");
         donateBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -89,27 +96,37 @@ public class DonorWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
+        locationTxt.setBackground(new java.awt.Color(51, 0, 51));
         locationTxt.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
+        locationTxt.setForeground(new java.awt.Color(0, 255, 50));
 
         jLabel2.setFont(new java.awt.Font("Lucida Calligraphy", 1, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 255, 50));
         jLabel2.setText("Quantity:");
 
         jLabel3.setFont(new java.awt.Font("Lucida Calligraphy", 1, 10)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 255, 50));
         jLabel3.setText("(This facility is not available for individuals)");
 
         jLabel4.setFont(new java.awt.Font("Lucida Calligraphy", 1, 12)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 255, 50));
         jLabel4.setText("Location:");
 
+        quantityTxt.setBackground(new java.awt.Color(51, 0, 51));
         quantityTxt.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
+        quantityTxt.setForeground(new java.awt.Color(0, 255, 50));
 
         jLabel5.setFont(new java.awt.Font("Lucida Calligraphy", 1, 12)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 255, 50));
         jLabel5.setText("Store:");
 
         jLabel6.setFont(new java.awt.Font("Lucida Calligraphy", 1, 10)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(0, 255, 50));
         jLabel6.setText("(This facility is only available for individuals)");
 
-        storeComboBox.setBackground(new java.awt.Color(255, 51, 0));
+        storeComboBox.setBackground(new java.awt.Color(51, 0, 51));
         storeComboBox.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
+        storeComboBox.setForeground(new java.awt.Color(0, 255, 50));
         storeComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 storeComboBoxActionPerformed(evt);
@@ -117,10 +134,12 @@ public class DonorWorkAreaJPanel extends javax.swing.JPanel {
         });
 
         jLabel7.setFont(new java.awt.Font("Lucida Calligraphy", 1, 12)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(0, 255, 50));
         jLabel7.setText("Network:");
 
-        comboBoxCity.setBackground(new java.awt.Color(255, 51, 0));
+        comboBoxCity.setBackground(new java.awt.Color(51, 0, 51));
         comboBoxCity.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
+        comboBoxCity.setForeground(new java.awt.Color(0, 255, 50));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -150,7 +169,7 @@ public class DonorWorkAreaJPanel extends javax.swing.JPanel {
                             .addComponent(comboBoxCity, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(storeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(donateBtn))
-                .addContainerGap(208, Short.MAX_VALUE))
+                .addContainerGap(469, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -179,7 +198,7 @@ public class DonorWorkAreaJPanel extends javax.swing.JPanel {
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(donateBtn)
-                .addContainerGap(237, Short.MAX_VALUE))
+                .addContainerGap(336, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
