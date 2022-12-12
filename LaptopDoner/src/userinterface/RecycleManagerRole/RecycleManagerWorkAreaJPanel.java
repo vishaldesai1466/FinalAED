@@ -23,6 +23,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
+
 public class RecycleManagerWorkAreaJPanel extends javax.swing.JPanel {
 
     /**
@@ -81,10 +82,12 @@ public class RecycleManagerWorkAreaJPanel extends javax.swing.JPanel {
         txtItemsComposed = new javax.swing.JTextField();
         btnDaily = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(153, 255, 255));
+        setBackground(new java.awt.Color(0, 0, 0));
+        setForeground(new java.awt.Color(0, 255, 50));
 
-        btnRefresh.setBackground(new java.awt.Color(255, 51, 0));
+        btnRefresh.setBackground(new java.awt.Color(51, 0, 51));
         btnRefresh.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
+        btnRefresh.setForeground(new java.awt.Color(0, 255, 50));
         btnRefresh.setText("Refresh");
         btnRefresh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -92,6 +95,10 @@ public class RecycleManagerWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
+        jScrollPane1.setBackground(new java.awt.Color(51, 0, 51));
+        jScrollPane1.setForeground(new java.awt.Color(0, 255, 50));
+
+        tblRecycleManager.setBackground(new java.awt.Color(51, 0, 51));
         tblRecycleManager.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
         tblRecycleManager.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -111,8 +118,9 @@ public class RecycleManagerWorkAreaJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblRecycleManager);
 
-        btnProcess.setBackground(new java.awt.Color(255, 51, 0));
+        btnProcess.setBackground(new java.awt.Color(51, 0, 51));
         btnProcess.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
+        btnProcess.setForeground(new java.awt.Color(0, 255, 50));
         btnProcess.setText("Process");
         btnProcess.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -120,18 +128,24 @@ public class RecycleManagerWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
-        btnBack.setBackground(new java.awt.Color(255, 51, 0));
+        btnBack.setBackground(new java.awt.Color(51, 0, 51));
         btnBack.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
+        btnBack.setForeground(new java.awt.Color(0, 255, 50));
         btnBack.setText("Back");
 
+        jLabel1.setBackground(new java.awt.Color(51, 0, 51));
         jLabel1.setFont(new java.awt.Font("Lucida Calligraphy", 1, 12)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 255, 50));
         jLabel1.setText("Items Recycled ");
 
         txtItemsComposed.setEditable(false);
+        txtItemsComposed.setBackground(new java.awt.Color(51, 0, 51));
         txtItemsComposed.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
+        txtItemsComposed.setForeground(new java.awt.Color(0, 255, 50));
 
-        btnDaily.setBackground(new java.awt.Color(255, 51, 0));
+        btnDaily.setBackground(new java.awt.Color(51, 0, 51));
         btnDaily.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
+        btnDaily.setForeground(new java.awt.Color(0, 255, 50));
         btnDaily.setText("Daily Submission");
         btnDaily.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -143,44 +157,48 @@ public class RecycleManagerWorkAreaJPanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtItemsComposed, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnBack)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnProcess)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnDaily))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(28, 28, 28)
-                        .addComponent(btnRefresh)))
-                .addContainerGap(86, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addComponent(txtItemsComposed, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnRefresh)
+                .addGap(23, 23, 23))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(14, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 780, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addComponent(btnBack)
+                .addGap(18, 18, 18)
+                .addComponent(btnProcess)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnDaily)
+                .addGap(58, 58, 58))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(txtItemsComposed, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnRefresh))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(37, 37, 37)
+                        .addComponent(btnRefresh))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1)
+                            .addComponent(txtItemsComposed, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(28, 28, 28)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnDaily)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(btnBack)
-                        .addComponent(btnProcess)))
-                .addContainerGap(256, Short.MAX_VALUE))
+                        .addComponent(btnProcess))
+                    .addComponent(btnDaily))
+                .addContainerGap(310, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

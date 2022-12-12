@@ -20,6 +20,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import userinterface.DriverRole.DriverWorkAreaJPanel;
 
+
 public class ProcessWorkRequestJPanel extends javax.swing.JPanel {
 
     /**
@@ -51,15 +52,20 @@ public class ProcessWorkRequestJPanel extends javax.swing.JPanel {
         btnBack = new javax.swing.JButton();
         btnSubmitResult = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(153, 255, 255));
+        setBackground(new java.awt.Color(0, 0, 0));
 
+        jLabel1.setBackground(new java.awt.Color(51, 0, 51));
         jLabel1.setFont(new java.awt.Font("Lucida Calligraphy", 1, 12)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 255, 50));
         jLabel1.setText("Result:");
 
+        txtResult.setBackground(new java.awt.Color(51, 0, 51));
         txtResult.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
+        txtResult.setForeground(new java.awt.Color(0, 255, 50));
 
-        btnBack.setBackground(new java.awt.Color(255, 51, 0));
+        btnBack.setBackground(new java.awt.Color(51, 0, 51));
         btnBack.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
+        btnBack.setForeground(new java.awt.Color(0, 255, 50));
         btnBack.setText("Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -67,8 +73,9 @@ public class ProcessWorkRequestJPanel extends javax.swing.JPanel {
             }
         });
 
-        btnSubmitResult.setBackground(new java.awt.Color(255, 51, 0));
+        btnSubmitResult.setBackground(new java.awt.Color(51, 0, 51));
         btnSubmitResult.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
+        btnSubmitResult.setForeground(new java.awt.Color(0, 255, 50));
         btnSubmitResult.setText("Submit Result");
         btnSubmitResult.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -81,7 +88,7 @@ public class ProcessWorkRequestJPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(24, 24, 24)
+                .addGap(253, 253, 253)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnBack)
@@ -91,12 +98,12 @@ public class ProcessWorkRequestJPanel extends javax.swing.JPanel {
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txtResult, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(333, Short.MAX_VALUE))
+                .addContainerGap(309, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(44, 44, 44)
+                .addGap(136, 136, 136)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(txtResult, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -104,7 +111,7 @@ public class ProcessWorkRequestJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnBack)
                     .addComponent(btnSubmitResult))
-                .addContainerGap(382, Short.MAX_VALUE))
+                .addContainerGap(392, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

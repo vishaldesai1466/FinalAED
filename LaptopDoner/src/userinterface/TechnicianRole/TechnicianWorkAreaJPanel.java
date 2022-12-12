@@ -74,7 +74,7 @@ public class TechnicianWorkAreaJPanel extends javax.swing.JPanel {
         btnProcess = new javax.swing.JButton();
         btnRefresh1 = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(51, 0, 51));
+        setBackground(new java.awt.Color(0, 0, 0));
 
         tblManageWorkQueue.setBackground(new java.awt.Color(51, 0, 51));
         tblManageWorkQueue.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
