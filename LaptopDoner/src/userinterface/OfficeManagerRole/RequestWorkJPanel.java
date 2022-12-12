@@ -23,6 +23,7 @@ import java.awt.Component;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+
 public class RequestWorkJPanel extends javax.swing.JPanel {
 
     private JPanel userProcessContainer;
@@ -67,15 +68,20 @@ public class RequestWorkJPanel extends javax.swing.JPanel {
         jLabel4 = new javax.swing.JLabel();
         txtLocation = new javax.swing.JTextField();
 
-        setBackground(new java.awt.Color(173, 255, 255));
+        setBackground(new java.awt.Color(0, 0, 0));
 
+        jLabel1.setBackground(new java.awt.Color(51, 0, 51));
         jLabel1.setFont(new java.awt.Font("Lucida Calligraphy", 1, 12)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 255, 50));
         jLabel1.setText("Message: ");
 
+        txtMessage.setBackground(new java.awt.Color(51, 0, 51));
         txtMessage.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
+        txtMessage.setForeground(new java.awt.Color(0, 255, 50));
 
-        btnRequestWork.setBackground(new java.awt.Color(255, 51, 0));
+        btnRequestWork.setBackground(new java.awt.Color(51, 0, 51));
         btnRequestWork.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
+        btnRequestWork.setForeground(new java.awt.Color(0, 255, 50));
         btnRequestWork.setText("Request Work");
         btnRequestWork.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -83,8 +89,9 @@ public class RequestWorkJPanel extends javax.swing.JPanel {
             }
         });
 
-        btnBack.setBackground(new java.awt.Color(255, 51, 0));
+        btnBack.setBackground(new java.awt.Color(51, 0, 51));
         btnBack.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
+        btnBack.setForeground(new java.awt.Color(0, 255, 50));
         btnBack.setText("<< Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -92,48 +99,54 @@ public class RequestWorkJPanel extends javax.swing.JPanel {
             }
         });
 
+        jLabel2.setBackground(new java.awt.Color(51, 0, 51));
         jLabel2.setFont(new java.awt.Font("Lucida Calligraphy", 1, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 255, 50));
         jLabel2.setText("Quantity:");
 
+        txtQuantity.setBackground(new java.awt.Color(51, 0, 51));
         txtQuantity.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
+        txtQuantity.setForeground(new java.awt.Color(0, 255, 50));
 
+        jLabel4.setBackground(new java.awt.Color(51, 0, 51));
         jLabel4.setFont(new java.awt.Font("Lucida Calligraphy", 1, 12)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 255, 50));
         jLabel4.setText("Location:");
 
+        txtLocation.setBackground(new java.awt.Color(51, 0, 51));
         txtLocation.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
+        txtLocation.setForeground(new java.awt.Color(0, 255, 50));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(288, 288, 288)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtLocation, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(txtQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jLabel4)
+                            .addGap(18, 18, 18)
+                            .addComponent(txtLocation, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jLabel2)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jLabel1)
+                            .addGap(18, 18, 18)
+                            .addComponent(txtMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnBack)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnRequestWork)
-                        .addContainerGap(372, Short.MAX_VALUE))))
+                        .addComponent(btnRequestWork)))
+                .addContainerGap(298, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(23, 23, 23)
+                .addGap(148, 148, 148)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(txtMessage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -149,7 +162,7 @@ public class RequestWorkJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnBack)
                     .addComponent(btnRequestWork))
-                .addContainerGap(343, Short.MAX_VALUE))
+                .addContainerGap(318, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

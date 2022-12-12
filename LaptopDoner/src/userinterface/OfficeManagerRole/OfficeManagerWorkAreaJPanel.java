@@ -18,6 +18,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
+
 public class OfficeManagerWorkAreaJPanel extends javax.swing.JPanel {
 
     private JPanel userProcessContainer;
@@ -74,8 +75,12 @@ public class OfficeManagerWorkAreaJPanel extends javax.swing.JPanel {
         btnRefresh = new javax.swing.JButton();
         btnRequestWork = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(153, 255, 255));
+        setBackground(new java.awt.Color(0, 0, 0));
 
+        jScrollPane1.setBackground(new java.awt.Color(51, 0, 51));
+        jScrollPane1.setForeground(new java.awt.Color(0, 255, 50));
+
+        mainOfficeJTable.setBackground(new java.awt.Color(51, 0, 51));
         mainOfficeJTable.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
         mainOfficeJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -95,8 +100,9 @@ public class OfficeManagerWorkAreaJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(mainOfficeJTable);
 
-        btnRefresh.setBackground(new java.awt.Color(255, 51, 0));
+        btnRefresh.setBackground(new java.awt.Color(51, 0, 51));
         btnRefresh.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
+        btnRefresh.setForeground(new java.awt.Color(0, 255, 50));
         btnRefresh.setText("Refresh");
         btnRefresh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -104,8 +110,9 @@ public class OfficeManagerWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
-        btnRequestWork.setBackground(new java.awt.Color(255, 51, 0));
+        btnRequestWork.setBackground(new java.awt.Color(51, 0, 51));
         btnRequestWork.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
+        btnRequestWork.setForeground(new java.awt.Color(0, 255, 50));
         btnRequestWork.setText("Request Work");
         btnRequestWork.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -118,23 +125,30 @@ public class OfficeManagerWorkAreaJPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnRequestWork)
-                    .addComponent(btnRefresh)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(215, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 788, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(14, 14, 14)
+                        .addComponent(btnRefresh)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btnRequestWork)
+                .addGap(29, 29, 29))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(18, 18, 18)
+                .addGap(30, 30, 30)
                 .addComponent(btnRefresh)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(30, 30, 30)
                 .addComponent(btnRequestWork)
-                .addContainerGap(268, Short.MAX_VALUE))
+                .addContainerGap(346, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
