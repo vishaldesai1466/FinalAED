@@ -114,13 +114,13 @@ public class EcoSystem extends Organization {
     }
     
     public int calculatePercentGiveAway(){
-        int totalDonation=donorTypeDonation("Individual")+donorTypeDonation("Hotel")+donorTypeDonation("Event");
+        int totalDonation=donorTypeDonation("Individual")+donorTypeDonation("University")+donorTypeDonation("Company");
         int totalGiveAway=getGiveAwayAmount(9)+getGiveAwayAmount(10)+getGiveAwayAmount(11);
         return (totalGiveAway*100)/totalDonation;
     }
     
     public int calculatePercentDecomposition(){
-        int totalDonation=donorTypeDonation("Individual")+donorTypeDonation("Hotel")+donorTypeDonation("Event");
+        int totalDonation=donorTypeDonation("Individual")+donorTypeDonation("University")+donorTypeDonation("Company");
         int totalDecomposition=getDecomposition();
         return (totalDecomposition*100)/totalDonation;
     }

@@ -353,8 +353,8 @@ public class AnalysisMode extends javax.swing.JPanel {
       //  business.donorTypeDonation(TOOL_TIP_TEXT_KEY)
         DefaultCategoryDataset barChartData = new DefaultCategoryDataset();
         barChartData.setValue(business.donorTypeDonation("Individual"), "Donation Amount", "Individual");
-        barChartData.setValue(business.donorTypeDonation("Hotel"), "Donation Amount", "Hotel");
-        barChartData.setValue(business.donorTypeDonation("Event"), "Donation Amount", "Event");
+        barChartData.setValue(business.donorTypeDonation("University"), "Donation Amount", "University");
+        barChartData.setValue(business.donorTypeDonation("Company"), "Donation Amount", "Company");
         JFreeChart barChart = ChartFactory.createBarChart("Laptop Donation", "Donor-Type", "Donation Amount", barChartData, PlotOrientation.VERTICAL, false, true, false);
         CategoryPlot barchrt = barChart.getCategoryPlot();
         barchrt.setRangeGridlinePaint(Color.ORANGE);

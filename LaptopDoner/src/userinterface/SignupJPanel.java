@@ -141,7 +141,7 @@ public class SignupJPanel extends javax.swing.JPanel {
         typeComboBox.setBackground(new java.awt.Color(51, 0, 51));
         typeComboBox.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
         typeComboBox.setForeground(new java.awt.Color(0, 255, 50));
-        typeComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Individual", "Hotel", "Event" }));
+        typeComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Individual", "University", "Company" }));
         add(typeComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 220, 117, -1));
 
         submitButton.setBackground(new java.awt.Color(51, 0, 51));
