@@ -80,10 +80,13 @@ public class MainJFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(0, 102, 102));
+        jPanel1.setBackground(new java.awt.Color(102, 0, 102));
+        jPanel1.setForeground(new java.awt.Color(0, 255, 50));
+        jPanel1.setPreferredSize(new java.awt.Dimension(200, 600));
 
-        btnLogin.setBackground(new java.awt.Color(255, 51, 0));
+        btnLogin.setBackground(new java.awt.Color(51, 0, 51));
         btnLogin.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
+        btnLogin.setForeground(new java.awt.Color(0, 255, 50));
         btnLogin.setText("Login");
         btnLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -91,20 +94,25 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
 
+        txtUserName.setBackground(new java.awt.Color(51, 0, 51));
         txtUserName.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
+        txtUserName.setForeground(new java.awt.Color(0, 255, 50));
 
+        txtPassword.setBackground(new java.awt.Color(51, 0, 51));
         txtPassword.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
+        txtPassword.setForeground(new java.awt.Color(0, 255, 50));
 
         jLabel1.setFont(new java.awt.Font("Lucida Calligraphy", 1, 12)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setForeground(new java.awt.Color(0, 255, 50));
         jLabel1.setText("User Name");
 
         jLabel2.setFont(new java.awt.Font("Lucida Calligraphy", 1, 12)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setForeground(new java.awt.Color(0, 255, 50));
         jLabel2.setText("Password");
 
-        btnLogout.setBackground(new java.awt.Color(255, 51, 0));
+        btnLogout.setBackground(new java.awt.Color(51, 0, 51));
         btnLogout.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
+        btnLogout.setForeground(new java.awt.Color(0, 255, 50));
         btnLogout.setText("Logout");
         btnLogout.setEnabled(false);
         btnLogout.addActionListener(new java.awt.event.ActionListener() {
@@ -114,11 +122,12 @@ public class MainJFrame extends javax.swing.JFrame {
         });
 
         jLabel3.setFont(new java.awt.Font("Lucida Calligraphy", 1, 12)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setForeground(new java.awt.Color(0, 255, 50));
         jLabel3.setText("New user?");
 
-        btnSignUp.setBackground(new java.awt.Color(255, 51, 0));
+        btnSignUp.setBackground(new java.awt.Color(51, 0, 51));
         btnSignUp.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
+        btnSignUp.setForeground(new java.awt.Color(0, 255, 50));
         btnSignUp.setText("Sign up");
         btnSignUp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -127,11 +136,12 @@ public class MainJFrame extends javax.swing.JFrame {
         });
 
         jLabel4.setFont(new java.awt.Font("Lucida Calligraphy", 1, 12)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setForeground(new java.awt.Color(0, 255, 50));
         jLabel4.setText("Existing User? Sign in");
 
-        btnAnalysis.setBackground(new java.awt.Color(255, 51, 0));
+        btnAnalysis.setBackground(new java.awt.Color(51, 0, 51));
         btnAnalysis.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
+        btnAnalysis.setForeground(new java.awt.Color(0, 255, 50));
         btnAnalysis.setText("Analysis Mode");
         btnAnalysis.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
