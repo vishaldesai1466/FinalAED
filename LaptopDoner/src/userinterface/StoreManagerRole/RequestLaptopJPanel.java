@@ -167,12 +167,16 @@ public class RequestLaptopJPanel extends javax.swing.JPanel {
         ));
         jScrollPane2.setViewportView(jTable1);
 
-        setBackground(new java.awt.Color(173, 255, 255));
+        setBackground(new java.awt.Color(0, 0, 0));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Lucida Calligraphy", 1, 12)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 255, 50));
         jLabel1.setText("Nearby Stores:");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, -1, -1));
+
+        jScrollPane1.setBackground(new java.awt.Color(51, 0, 51));
+        jScrollPane1.setForeground(new java.awt.Color(0, 255, 50));
 
         tblStores.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
         tblStores.setModel(new javax.swing.table.DefaultTableModel(
@@ -193,49 +197,55 @@ public class RequestLaptopJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblStores);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 448, 116));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 780, 116));
 
         jLabel2.setFont(new java.awt.Font("Lucida Calligraphy", 1, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 255, 50));
         jLabel2.setText("Quantity: ");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 170, -1, -1));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 300, -1, -1));
 
+        quantityTxt.setBackground(new java.awt.Color(51, 0, 51));
         quantityTxt.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
+        quantityTxt.setForeground(new java.awt.Color(0, 255, 50));
         quantityTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 quantityTxtActionPerformed(evt);
             }
         });
-        add(quantityTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 170, 123, -1));
+        add(quantityTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 300, 123, -1));
 
-        requestBtn.setBackground(new java.awt.Color(255, 51, 0));
+        requestBtn.setBackground(new java.awt.Color(51, 0, 51));
         requestBtn.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
+        requestBtn.setForeground(new java.awt.Color(0, 255, 50));
         requestBtn.setText("Request");
         requestBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 requestBtnActionPerformed(evt);
             }
         });
-        add(requestBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 170, -1, -1));
+        add(requestBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 300, -1, -1));
 
-        btnRequestInventory.setBackground(new java.awt.Color(255, 51, 0));
+        btnRequestInventory.setBackground(new java.awt.Color(51, 0, 51));
         btnRequestInventory.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
+        btnRequestInventory.setForeground(new java.awt.Color(0, 255, 50));
         btnRequestInventory.setText("Request Inventory");
         btnRequestInventory.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRequestInventoryActionPerformed(evt);
             }
         });
-        add(btnRequestInventory, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 210, -1, -1));
+        add(btnRequestInventory, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 340, -1, -1));
 
-        btnBack.setBackground(new java.awt.Color(255, 51, 0));
+        btnBack.setBackground(new java.awt.Color(51, 0, 51));
         btnBack.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
+        btnBack.setForeground(new java.awt.Color(0, 255, 50));
         btnBack.setText("<< Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBackActionPerformed(evt);
             }
         });
-        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, -1, -1));
+        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 340, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
 //    public void populatestoreTable() {
@@ -378,7 +388,23 @@ public class RequestLaptopJPanel extends javax.swing.JPanel {
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);
     }//GEN-LAST:event_btnBackActionPerformed
-
+//    public void populateRequestTable(LaptopWorkRequest request, Store store) {
+//
+//                       DefaultTableModel model = (DefaultTableModel) tblStoreWorkQueue.getModel();
+//                      model.setRowCount(0);
+//        Object[] row = new Object[6];
+//        row[0] = request;
+//        //  System.out.println("store:"+store);
+//        row[1] = store;
+//        row[2] = request.getStatus();
+//        row[3] = request.getQuantity();
+//        row[4] = request.getLocation();
+//        //     String result = request.getResult();
+//        //       row[4] = result == null ? "Waiting" : result;
+//
+//        model.addRow(row);
+//
+//    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

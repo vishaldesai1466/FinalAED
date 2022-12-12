@@ -97,7 +97,10 @@ public class StoreWorkAreaJPanel extends javax.swing.JPanel {
         txtQuantity = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(173, 255, 255));
+        setBackground(new java.awt.Color(0, 0, 0));
+
+        jScrollPane1.setBackground(new java.awt.Color(51, 0, 51));
+        jScrollPane1.setForeground(new java.awt.Color(0, 255, 50));
 
         tblStore.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
         tblStore.setModel(new javax.swing.table.DefaultTableModel(
@@ -118,8 +121,9 @@ public class StoreWorkAreaJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblStore);
 
-        btnRefresh.setBackground(new java.awt.Color(255, 51, 0));
+        btnRefresh.setBackground(new java.awt.Color(51, 0, 51));
         btnRefresh.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
+        btnRefresh.setForeground(new java.awt.Color(0, 255, 50));
         btnRefresh.setText("Refresh");
         btnRefresh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -127,8 +131,9 @@ public class StoreWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
-        btnRequestLaptop.setBackground(new java.awt.Color(255, 51, 0));
+        btnRequestLaptop.setBackground(new java.awt.Color(51, 0, 51));
         btnRequestLaptop.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
+        btnRequestLaptop.setForeground(new java.awt.Color(0, 255, 50));
         btnRequestLaptop.setText("Request Laptop");
         btnRequestLaptop.setEnabled(false);
         btnRequestLaptop.addActionListener(new java.awt.event.ActionListener() {
@@ -137,8 +142,9 @@ public class StoreWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
-        btnAdd.setBackground(new java.awt.Color(255, 51, 0));
+        btnAdd.setBackground(new java.awt.Color(51, 0, 51));
         btnAdd.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
+        btnAdd.setForeground(new java.awt.Color(0, 255, 50));
         btnAdd.setText("Add Laptop");
         btnAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -147,13 +153,17 @@ public class StoreWorkAreaJPanel extends javax.swing.JPanel {
         });
 
         jLabel1.setFont(new java.awt.Font("Lucida Calligraphy", 1, 12)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 255, 50));
         jLabel1.setText("Current Stock:");
 
         txtStock.setEditable(false);
+        txtStock.setBackground(new java.awt.Color(51, 0, 51));
         txtStock.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
+        txtStock.setForeground(new java.awt.Color(0, 255, 50));
 
-        btnSend.setBackground(new java.awt.Color(255, 51, 0));
+        btnSend.setBackground(new java.awt.Color(51, 0, 51));
         btnSend.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
+        btnSend.setForeground(new java.awt.Color(0, 255, 50));
         btnSend.setText("Send Laptop");
         btnSend.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -162,13 +172,17 @@ public class StoreWorkAreaJPanel extends javax.swing.JPanel {
         });
 
         jLabel2.setFont(new java.awt.Font("Lucida Calligraphy", 1, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 255, 50));
         jLabel2.setText("Give Away:");
 
         txtGiveAway.setEditable(false);
+        txtGiveAway.setBackground(new java.awt.Color(51, 0, 51));
         txtGiveAway.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
+        txtGiveAway.setForeground(new java.awt.Color(0, 255, 50));
 
-        btnGiveAway.setBackground(new java.awt.Color(255, 51, 0));
+        btnGiveAway.setBackground(new java.awt.Color(51, 0, 51));
         btnGiveAway.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
+        btnGiveAway.setForeground(new java.awt.Color(0, 255, 50));
         btnGiveAway.setText("Give Away");
         btnGiveAway.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -176,8 +190,9 @@ public class StoreWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
-        btnDailySub.setBackground(new java.awt.Color(255, 51, 0));
+        btnDailySub.setBackground(new java.awt.Color(51, 0, 51));
         btnDailySub.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
+        btnDailySub.setForeground(new java.awt.Color(0, 255, 50));
         btnDailySub.setText("Daily Submission");
         btnDailySub.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -185,9 +200,12 @@ public class StoreWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
+        txtQuantity.setBackground(new java.awt.Color(51, 0, 51));
         txtQuantity.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
+        txtQuantity.setForeground(new java.awt.Color(0, 255, 50));
 
         jLabel3.setFont(new java.awt.Font("Lucida Calligraphy", 1, 12)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 255, 50));
         jLabel3.setText("Quantity:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -195,7 +213,7 @@ public class StoreWorkAreaJPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(103, 103, 103)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
@@ -223,12 +241,12 @@ public class StoreWorkAreaJPanel extends javax.swing.JPanel {
                             .addComponent(txtQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                             .addComponent(btnSend, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(47, Short.MAX_VALUE))
+                .addContainerGap(120, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(85, 85, 85)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnRefresh)
                     .addComponent(jLabel1)
@@ -248,7 +266,7 @@ public class StoreWorkAreaJPanel extends javax.swing.JPanel {
                     .addComponent(btnRequestLaptop)
                     .addComponent(btnAdd)
                     .addComponent(btnDailySub))
-                .addContainerGap(221, Short.MAX_VALUE))
+                .addContainerGap(247, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
