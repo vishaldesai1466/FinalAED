@@ -96,8 +96,11 @@ public class ManageUserAccountJPanel extends javax.swing.JPanel {
         jLabel5 = new javax.swing.JLabel();
         organizationJComboBox = new javax.swing.JComboBox();
 
-        setBackground(new java.awt.Color(173, 255, 255));
+        setBackground(new java.awt.Color(0, 0, 0));
 
+        jScrollPane1.setForeground(new java.awt.Color(0, 255, 50));
+
+        tblManageUserAccount.setBackground(new java.awt.Color(51, 0, 51));
         tblManageUserAccount.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
         tblManageUserAccount.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -118,26 +121,36 @@ public class ManageUserAccountJPanel extends javax.swing.JPanel {
         jScrollPane1.setViewportView(tblManageUserAccount);
 
         jLabel1.setFont(new java.awt.Font("Lucida Calligraphy", 1, 12)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 255, 50));
         jLabel1.setText("Driver:");
 
-        comboBoxDriver.setBackground(new java.awt.Color(255, 51, 0));
+        comboBoxDriver.setBackground(new java.awt.Color(51, 0, 51));
         comboBoxDriver.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
+        comboBoxDriver.setForeground(new java.awt.Color(0, 255, 50));
 
         jLabel2.setFont(new java.awt.Font("Lucida Calligraphy", 1, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 255, 50));
         jLabel2.setText("Role:");
 
         jLabel3.setFont(new java.awt.Font("Lucida Calligraphy", 1, 12)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 255, 50));
         jLabel3.setText("User Name:");
 
+        txtUserName.setBackground(new java.awt.Color(51, 0, 51));
         txtUserName.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
+        txtUserName.setForeground(new java.awt.Color(0, 255, 50));
 
+        txtPassword.setBackground(new java.awt.Color(51, 0, 51));
         txtPassword.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
+        txtPassword.setForeground(new java.awt.Color(0, 255, 50));
 
         jLabel4.setFont(new java.awt.Font("Lucida Calligraphy", 1, 12)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 255, 50));
         jLabel4.setText("Password:");
 
-        btnBack.setBackground(new java.awt.Color(255, 51, 0));
+        btnBack.setBackground(new java.awt.Color(51, 0, 51));
         btnBack.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
+        btnBack.setForeground(new java.awt.Color(0, 255, 50));
         btnBack.setText("Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -145,8 +158,9 @@ public class ManageUserAccountJPanel extends javax.swing.JPanel {
             }
         });
 
-        btnCreate.setBackground(new java.awt.Color(255, 51, 0));
+        btnCreate.setBackground(new java.awt.Color(51, 0, 51));
         btnCreate.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
+        btnCreate.setForeground(new java.awt.Color(0, 255, 50));
         btnCreate.setText("Create");
         btnCreate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -154,14 +168,17 @@ public class ManageUserAccountJPanel extends javax.swing.JPanel {
             }
         });
 
-        comboBoxRole.setBackground(new java.awt.Color(255, 51, 0));
+        comboBoxRole.setBackground(new java.awt.Color(51, 0, 51));
         comboBoxRole.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
+        comboBoxRole.setForeground(new java.awt.Color(0, 255, 50));
 
         jLabel5.setFont(new java.awt.Font("Lucida Calligraphy", 1, 12)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 255, 50));
         jLabel5.setText("Organization");
 
-        organizationJComboBox.setBackground(new java.awt.Color(255, 51, 0));
+        organizationJComboBox.setBackground(new java.awt.Color(51, 0, 51));
         organizationJComboBox.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
+        organizationJComboBox.setForeground(new java.awt.Color(0, 255, 50));
         organizationJComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 organizationJComboBoxActionPerformed(evt);
@@ -173,43 +190,42 @@ public class ManageUserAccountJPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(152, 152, 152)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel1)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel3))
-                                .addGap(29, 29, 29)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(comboBoxDriver, javax.swing.GroupLayout.Alignment.LEADING, 0, 308, Short.MAX_VALUE)
-                                    .addComponent(comboBoxRole, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(txtUserName)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addGap(44, 44, 44)
-                                .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnBack)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnCreate))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addGap(18, 18, 18)
-                                .addComponent(organizationJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(138, 138, 138))))
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3))
+                        .addGap(29, 29, 29)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(comboBoxDriver, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(comboBoxRole, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtUserName, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addGap(44, 44, 44)
+                        .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addGap(18, 18, 18)
+                        .addComponent(organizationJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(150, 150, 150)
+                        .addComponent(btnBack)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnCreate)))
+                .addContainerGap(222, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(53, 53, 53)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
@@ -230,11 +246,11 @@ public class ManageUserAccountJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
-                .addGap(49, 49, 49)
+                .addGap(62, 62, 62)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnBack)
                     .addComponent(btnCreate))
-                .addContainerGap(133, Short.MAX_VALUE))
+                .addContainerGap(148, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
