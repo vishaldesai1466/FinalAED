@@ -90,8 +90,12 @@ public class InventoryManagerWorkAreaJPanel extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         txtGiveAway = new javax.swing.JTextField();
 
-        setBackground(new java.awt.Color(153, 255, 255));
+        setBackground(new java.awt.Color(0, 0, 0));
 
+        jScrollPane1.setBackground(new java.awt.Color(51, 0, 51));
+        jScrollPane1.setForeground(new java.awt.Color(0, 255, 50));
+
+        tblInventory.setBackground(new java.awt.Color(51, 0, 51));
         tblInventory.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
         tblInventory.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -111,12 +115,14 @@ public class InventoryManagerWorkAreaJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblInventory);
 
-        jButton1.setBackground(new java.awt.Color(255, 51, 0));
+        jButton1.setBackground(new java.awt.Color(51, 0, 51));
         jButton1.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(0, 255, 50));
         jButton1.setText("Refresh");
 
-        btnRequestWork.setBackground(new java.awt.Color(255, 51, 0));
+        btnRequestWork.setBackground(new java.awt.Color(51, 0, 51));
         btnRequestWork.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
+        btnRequestWork.setForeground(new java.awt.Color(0, 255, 50));
         btnRequestWork.setText("Request ServiceCenter");
         btnRequestWork.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -124,8 +130,9 @@ public class InventoryManagerWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
-        btnProcess.setBackground(new java.awt.Color(255, 51, 0));
+        btnProcess.setBackground(new java.awt.Color(51, 0, 51));
         btnProcess.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
+        btnProcess.setForeground(new java.awt.Color(0, 255, 50));
         btnProcess.setText("Process");
         btnProcess.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -133,19 +140,24 @@ public class InventoryManagerWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
+        jLabel1.setBackground(new java.awt.Color(51, 0, 51));
         jLabel1.setFont(new java.awt.Font("Lucida Calligraphy", 1, 12)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 255, 50));
         jLabel1.setText("Stock:");
 
         txtStock.setEditable(false);
+        txtStock.setBackground(new java.awt.Color(51, 0, 51));
         txtStock.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
+        txtStock.setForeground(new java.awt.Color(0, 255, 50));
         txtStock.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtStockActionPerformed(evt);
             }
         });
 
-        btnGiveAway.setBackground(new java.awt.Color(255, 51, 0));
+        btnGiveAway.setBackground(new java.awt.Color(51, 0, 51));
         btnGiveAway.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
+        btnGiveAway.setForeground(new java.awt.Color(0, 255, 50));
         btnGiveAway.setText("Give Away");
         btnGiveAway.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -153,8 +165,9 @@ public class InventoryManagerWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
-        btnDailySub.setBackground(new java.awt.Color(255, 51, 0));
+        btnDailySub.setBackground(new java.awt.Color(51, 0, 51));
         btnDailySub.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
+        btnDailySub.setForeground(new java.awt.Color(0, 255, 50));
         btnDailySub.setText("Daily Submission");
         btnDailySub.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -162,11 +175,15 @@ public class InventoryManagerWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
+        jLabel2.setBackground(new java.awt.Color(51, 0, 51));
         jLabel2.setFont(new java.awt.Font("Lucida Calligraphy", 1, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 255, 50));
         jLabel2.setText("Give Away:");
 
         txtGiveAway.setEditable(false);
+        txtGiveAway.setBackground(new java.awt.Color(51, 0, 51));
         txtGiveAway.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
+        txtGiveAway.setForeground(new java.awt.Color(0, 255, 50));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -175,9 +192,11 @@ public class InventoryManagerWorkAreaJPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnGiveAway)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 780, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(14, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel1)
                                 .addGap(18, 18, 18)
@@ -185,21 +204,22 @@ public class InventoryManagerWorkAreaJPanel extends javax.swing.JPanel {
                                 .addGap(54, 54, 54)
                                 .addComponent(jLabel2)
                                 .addGap(18, 18, 18)
-                                .addComponent(txtGiveAway, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtGiveAway, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(btnProcess, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGap(249, 249, 249)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(13, 13, 13)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(btnDailySub, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(btnRequestWork, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addGap(50, 50, 50)
+                                .addComponent(btnGiveAway)
+                                .addGap(91, 91, 91)
+                                .addComponent(btnDailySub, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(76, 76, 76)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(jButton1)
-                                .addGap(1, 1, 1))))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 493, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(46, Short.MAX_VALUE))
+                                .addGap(1, 1, 1))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(btnRequestWork)
+                                .addGap(36, 36, 36))))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -216,12 +236,10 @@ public class InventoryManagerWorkAreaJPanel extends javax.swing.JPanel {
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnRequestWork)
-                    .addComponent(btnProcess))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnGiveAway)
-                    .addComponent(btnDailySub))
-                .addContainerGap(212, Short.MAX_VALUE))
+                    .addComponent(btnProcess)
+                    .addComponent(btnDailySub)
+                    .addComponent(btnGiveAway))
+                .addContainerGap(359, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

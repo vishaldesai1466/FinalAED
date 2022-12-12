@@ -21,10 +21,7 @@ import java.awt.CardLayout;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author Aadesh Randeria
- */
+
 public class DriverWorkAreaJPanel extends javax.swing.JPanel {
 
     /**

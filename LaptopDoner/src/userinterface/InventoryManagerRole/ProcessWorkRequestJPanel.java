@@ -53,15 +53,20 @@ public class ProcessWorkRequestJPanel extends javax.swing.JPanel {
         btnBack = new javax.swing.JButton();
         btnSubmit = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(153, 255, 255));
+        setBackground(new java.awt.Color(0, 0, 0));
 
+        jLabel1.setBackground(new java.awt.Color(51, 0, 51));
         jLabel1.setFont(new java.awt.Font("Lucida Calligraphy", 1, 12)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 255, 50));
         jLabel1.setText("Result:");
 
+        txtResult.setBackground(new java.awt.Color(51, 0, 51));
         txtResult.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
+        txtResult.setForeground(new java.awt.Color(0, 255, 50));
 
-        btnBack.setBackground(new java.awt.Color(255, 51, 0));
+        btnBack.setBackground(new java.awt.Color(51, 0, 51));
         btnBack.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
+        btnBack.setForeground(new java.awt.Color(0, 255, 50));
         btnBack.setText("<< Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -69,8 +74,9 @@ public class ProcessWorkRequestJPanel extends javax.swing.JPanel {
             }
         });
 
-        btnSubmit.setBackground(new java.awt.Color(255, 51, 0));
+        btnSubmit.setBackground(new java.awt.Color(51, 0, 51));
         btnSubmit.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
+        btnSubmit.setForeground(new java.awt.Color(0, 255, 50));
         btnSubmit.setText("Submit Result");
         btnSubmit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -93,7 +99,7 @@ public class ProcessWorkRequestJPanel extends javax.swing.JPanel {
                         .addComponent(btnBack)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnSubmit)))
-                .addContainerGap(374, Short.MAX_VALUE))
+                .addContainerGap(582, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -106,7 +112,7 @@ public class ProcessWorkRequestJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnBack)
                     .addComponent(btnSubmit))
-                .addContainerGap(399, Short.MAX_VALUE))
+                .addContainerGap(501, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

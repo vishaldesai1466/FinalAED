@@ -23,10 +23,7 @@ import Business.WorkQueue.StoreWorkRequest;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-/**
- *
- * @author Apurva Sawant
- */
+
 public class DonorWorkAreaJPanel extends javax.swing.JPanel {
 
     private JPanel userProcessContainer;
