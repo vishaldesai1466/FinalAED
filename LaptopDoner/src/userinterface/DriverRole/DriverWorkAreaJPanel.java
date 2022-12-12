@@ -21,6 +21,10 @@ import java.awt.CardLayout;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
+/**
+ *
+ * @author Aadesh Randeria
+ */
 public class DriverWorkAreaJPanel extends javax.swing.JPanel {
 
     /**
@@ -81,9 +85,15 @@ public class DriverWorkAreaJPanel extends javax.swing.JPanel {
         btnProcess = new javax.swing.JButton();
         btnRefresh = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(153, 255, 255));
+        setBackground(new java.awt.Color(0, 0, 0));
+        setForeground(new java.awt.Color(0, 255, 50));
 
+        jScrollPane1.setBackground(new java.awt.Color(51, 0, 51));
+        jScrollPane1.setForeground(new java.awt.Color(0, 255, 50));
+
+        tblManageWorkQueue.setBackground(new java.awt.Color(51, 0, 51));
         tblManageWorkQueue.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
+        tblManageWorkQueue.setForeground(new java.awt.Color(0, 255, 50));
         tblManageWorkQueue.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -102,8 +112,9 @@ public class DriverWorkAreaJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblManageWorkQueue);
 
-        btnProcess.setBackground(new java.awt.Color(255, 51, 0));
+        btnProcess.setBackground(new java.awt.Color(51, 0, 51));
         btnProcess.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
+        btnProcess.setForeground(new java.awt.Color(0, 255, 50));
         btnProcess.setText("Process");
         btnProcess.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -111,8 +122,9 @@ public class DriverWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
-        btnRefresh.setBackground(new java.awt.Color(255, 51, 0));
+        btnRefresh.setBackground(new java.awt.Color(51, 0, 51));
         btnRefresh.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
+        btnRefresh.setForeground(new java.awt.Color(0, 255, 50));
         btnRefresh.setText("Refresh");
         btnRefresh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -124,26 +136,30 @@ public class DriverWorkAreaJPanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnProcess)
+                .addGap(15, 15, 15))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnRefresh))
-                    .addComponent(btnProcess))
-                .addContainerGap(37, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 788, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnRefresh)
+                        .addGap(10, 10, 10)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnRefresh)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(22, 22, 22)
+                .addComponent(btnRefresh)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnProcess)
-                .addContainerGap(341, Short.MAX_VALUE))
+                .addContainerGap(350, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

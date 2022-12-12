@@ -23,6 +23,10 @@ import java.awt.Component;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+/**
+ *
+ * @author Aadesh Randeria
+ */
 public class ProcessWorkRequestJPanel extends javax.swing.JPanel {
 
     /**
@@ -54,15 +58,20 @@ public class ProcessWorkRequestJPanel extends javax.swing.JPanel {
         btnSubmitResult = new javax.swing.JButton();
         btnBack = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(153, 255, 255));
+        setBackground(new java.awt.Color(0, 0, 0));
+        setForeground(new java.awt.Color(0, 255, 50));
 
         jLabel1.setFont(new java.awt.Font("Lucida Calligraphy", 1, 12)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 255, 50));
         jLabel1.setText("Result:");
 
+        txtResult.setBackground(new java.awt.Color(51, 0, 51));
         txtResult.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
+        txtResult.setForeground(new java.awt.Color(0, 255, 50));
 
-        btnSubmitResult.setBackground(new java.awt.Color(255, 51, 0));
+        btnSubmitResult.setBackground(new java.awt.Color(51, 0, 51));
         btnSubmitResult.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
+        btnSubmitResult.setForeground(new java.awt.Color(0, 255, 50));
         btnSubmitResult.setText("Submit Result");
         btnSubmitResult.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -70,8 +79,9 @@ public class ProcessWorkRequestJPanel extends javax.swing.JPanel {
             }
         });
 
-        btnBack.setBackground(new java.awt.Color(255, 51, 0));
+        btnBack.setBackground(new java.awt.Color(51, 0, 51));
         btnBack.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
+        btnBack.setForeground(new java.awt.Color(0, 255, 50));
         btnBack.setText("Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -94,7 +104,7 @@ public class ProcessWorkRequestJPanel extends javax.swing.JPanel {
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txtResult, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(333, Short.MAX_VALUE))
+                .addContainerGap(538, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -107,7 +117,7 @@ public class ProcessWorkRequestJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnBack)
                     .addComponent(btnSubmitResult))
-                .addContainerGap(382, Short.MAX_VALUE))
+                .addContainerGap(484, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
