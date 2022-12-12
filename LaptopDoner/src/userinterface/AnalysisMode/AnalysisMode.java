@@ -85,14 +85,16 @@ public class AnalysisMode extends javax.swing.JPanel {
 
         jSplitPane3.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
 
-        jPanel9.setBackground(new java.awt.Color(0, 102, 102));
+        jPanel9.setBackground(new java.awt.Color(0, 0, 0));
 
+        jLabel3.setBackground(new java.awt.Color(0, 0, 0));
         jLabel3.setFont(new java.awt.Font("Lucida Calligraphy", 1, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setForeground(new java.awt.Color(0, 255, 50));
         jLabel3.setText("Analyze amount of laptop donated across cities");
 
-        btnResultQuestion2.setBackground(new java.awt.Color(255, 51, 0));
+        btnResultQuestion2.setBackground(new java.awt.Color(51, 0, 51));
         btnResultQuestion2.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
+        btnResultQuestion2.setForeground(new java.awt.Color(0, 255, 50));
         btnResultQuestion2.setText("View Result");
         btnResultQuestion2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -137,14 +139,16 @@ public class AnalysisMode extends javax.swing.JPanel {
 
         jSplitPane4.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
 
-        jPanel11.setBackground(new java.awt.Color(0, 102, 102));
+        jPanel11.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel11.setForeground(new java.awt.Color(0, 255, 50));
 
         jLabel4.setFont(new java.awt.Font("Lucida Calligraphy", 1, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setForeground(new java.awt.Color(0, 255, 50));
         jLabel4.setText("Store comparison that donated laptops across different cities");
 
-        btnResultQuestion3.setBackground(new java.awt.Color(255, 51, 0));
+        btnResultQuestion3.setBackground(new java.awt.Color(51, 0, 51));
         btnResultQuestion3.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
+        btnResultQuestion3.setForeground(new java.awt.Color(0, 255, 50));
         btnResultQuestion3.setText("View Result");
         btnResultQuestion3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -152,8 +156,9 @@ public class AnalysisMode extends javax.swing.JPanel {
             }
         });
 
-        comboBoxCity.setBackground(new java.awt.Color(255, 51, 0));
+        comboBoxCity.setBackground(new java.awt.Color(51, 0, 51));
         comboBoxCity.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
+        comboBoxCity.setForeground(new java.awt.Color(0, 255, 50));
         comboBoxCity.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Boston", "Cambridge", "Worchester" }));
 
         javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
@@ -194,14 +199,16 @@ public class AnalysisMode extends javax.swing.JPanel {
 
         jSplitPane5.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
 
-        jPanel13.setBackground(new java.awt.Color(0, 102, 102));
+        jPanel13.setBackground(new java.awt.Color(0, 0, 0));
 
+        jLabel5.setBackground(new java.awt.Color(0, 0, 0));
         jLabel5.setFont(new java.awt.Font("Lucida Calligraphy", 1, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setForeground(new java.awt.Color(0, 255, 50));
         jLabel5.setText("Comparison of donation received from Individual vs Universities vs Companies");
 
-        btnResultQuestion4.setBackground(new java.awt.Color(255, 51, 0));
+        btnResultQuestion4.setBackground(new java.awt.Color(51, 0, 51));
         btnResultQuestion4.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
+        btnResultQuestion4.setForeground(new java.awt.Color(0, 255, 50));
         btnResultQuestion4.setText("View Result");
         btnResultQuestion4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -244,14 +251,15 @@ public class AnalysisMode extends javax.swing.JPanel {
 
         jSplitPane1.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
 
-        jPanel6.setBackground(new java.awt.Color(0, 102, 102));
+        jPanel6.setBackground(new java.awt.Color(0, 0, 0));
 
         jLabel7.setFont(new java.awt.Font("Lucida Calligraphy", 1, 14)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setText("Analyze ratio of laptop donated to need people / laptop sent for recycle");
+        jLabel7.setForeground(new java.awt.Color(0, 255, 50));
+        jLabel7.setText("Analyze ratio of laptop donated to needy people and laptop sent for recycle");
 
-        btnResultQuestion6.setBackground(new java.awt.Color(255, 51, 0));
+        btnResultQuestion6.setBackground(new java.awt.Color(51, 0, 51));
         btnResultQuestion6.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
+        btnResultQuestion6.setForeground(new java.awt.Color(0, 255, 50));
         btnResultQuestion6.setText("View Result");
         btnResultQuestion6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -294,7 +302,7 @@ public class AnalysisMode extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(tab6, javax.swing.GroupLayout.DEFAULT_SIZE, 817, Short.MAX_VALUE)
+            .addComponent(tab6)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
