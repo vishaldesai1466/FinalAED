@@ -92,6 +92,7 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
         backJButton = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         nameJTextField = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(0, 0, 0));
         setToolTipText("");
@@ -217,6 +218,16 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
         nameJTextField.setForeground(new java.awt.Color(0, 255, 50));
         nameJTextField.setToolTipText("");
         add(nameJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 280, 200, -1));
+
+        jButton1.setBackground(new java.awt.Color(51, 0, 51));
+        jButton1.setForeground(new java.awt.Color(0, 255, 50));
+        jButton1.setText("Delete");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 400, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void networkJComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_networkJComboBoxActionPerformed
@@ -278,11 +289,33 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_passwordJPasswordFieldActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        
+DefaultTableModel model = (DefaultTableModel) enterpriseJTable.getModel();
+        
+        int selectedRowIndex = enterpriseJTable.getSelectedRow();
+        
+        if(selectedRowIndex<0) {
+            JOptionPane.showMessageDialog(this,"Please select a row to delete.");
+            return;
+        }
+
+        model.removeRow(selectedRowIndex);
+        
+        JOptionPane.showMessageDialog(this, "Employee Details deleted");
+        
+        networkJComboBox.setSelectedItem("");
+        enterpriseJComboBox.setSelectedItem("");
+        usernameJTextField.setText("");
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backJButton;
     private javax.swing.JComboBox enterpriseJComboBox;
     private javax.swing.JTable enterpriseJTable;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

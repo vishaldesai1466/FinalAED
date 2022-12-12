@@ -58,6 +58,7 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
         nameJTextField = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         backJButton = new javax.swing.JButton();
+        deleteButton1 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(0, 0, 0));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -125,6 +126,17 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
             }
         });
         add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 300, -1, -1));
+
+        deleteButton1.setBackground(new java.awt.Color(51, 0, 51));
+        deleteButton1.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
+        deleteButton1.setForeground(new java.awt.Color(0, 255, 50));
+        deleteButton1.setText("Delete");
+        deleteButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteButton1ActionPerformed(evt);
+            }
+        });
+        add(deleteButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 300, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void submitJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitJButtonActionPerformed
@@ -182,9 +194,28 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
         layout.previous(userProcessContainer);
     }//GEN-LAST:event_backJButtonActionPerformed
 
+    private void deleteButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButton1ActionPerformed
+        // TODO add your handling code here:
+        DefaultTableModel model = (DefaultTableModel) networkJTable.getModel();
+        
+        int selectedRowIndex = networkJTable.getSelectedRow();
+        
+        if(selectedRowIndex<0) {
+            JOptionPane.showMessageDialog(this,"Please select a row to delete.");
+            return;
+        }
+
+        model.removeRow(selectedRowIndex);
+        
+        JOptionPane.showMessageDialog(this, "Employee Details deleted");
+        
+        
+    }//GEN-LAST:event_deleteButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backJButton;
+    private javax.swing.JButton deleteButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField nameJTextField;
