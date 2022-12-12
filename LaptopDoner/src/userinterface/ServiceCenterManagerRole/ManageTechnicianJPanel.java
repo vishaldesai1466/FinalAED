@@ -71,6 +71,7 @@ public class ManageTechnicianJPanel extends javax.swing.JPanel {
 
         tblManageTechnician.setBackground(new java.awt.Color(51, 0, 51));
         tblManageTechnician.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
+        tblManageTechnician.setForeground(new java.awt.Color(0, 255, 50));
         tblManageTechnician.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 

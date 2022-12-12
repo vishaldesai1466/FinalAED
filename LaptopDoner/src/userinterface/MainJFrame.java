@@ -215,6 +215,7 @@ public class MainJFrame extends javax.swing.JFrame {
         container.setBackground(new java.awt.Color(153, 255, 255));
         container.setLayout(new java.awt.CardLayout());
 
+        jLabel6.setBackground(new java.awt.Color(51, 0, 51));
         jLabel6.setFont(new java.awt.Font("Lucida Calligraphy", 3, 18)); // NOI18N
         jLabel6.setText("Welcome to Laptop Drive..!!");
         container.add(jLabel6, "card2");

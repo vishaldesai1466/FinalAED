@@ -104,6 +104,7 @@ public class StoreWorkAreaJPanel extends javax.swing.JPanel {
 
         tblStore.setBackground(new java.awt.Color(51, 0, 51));
         tblStore.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
+        tblStore.setForeground(new java.awt.Color(0, 255, 50));
         tblStore.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 

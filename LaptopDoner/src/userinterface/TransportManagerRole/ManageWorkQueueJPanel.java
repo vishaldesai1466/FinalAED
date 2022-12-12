@@ -81,6 +81,7 @@ public class ManageWorkQueueJPanel extends javax.swing.JPanel {
 
         tblManageWorkQueue.setBackground(new java.awt.Color(51, 0, 51));
         tblManageWorkQueue.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
+        tblManageWorkQueue.setForeground(new java.awt.Color(0, 255, 50));
         tblManageWorkQueue.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -136,10 +137,10 @@ public class ManageWorkQueueJPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(296, 296, 296)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(btnRefresh)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(296, 296, 296)
                                 .addComponent(btnBack)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(btnRequest)

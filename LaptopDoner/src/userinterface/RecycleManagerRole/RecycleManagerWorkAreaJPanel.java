@@ -100,6 +100,7 @@ public class RecycleManagerWorkAreaJPanel extends javax.swing.JPanel {
 
         tblRecycleManager.setBackground(new java.awt.Color(51, 0, 51));
         tblRecycleManager.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
+        tblRecycleManager.setForeground(new java.awt.Color(0, 255, 50));
         tblRecycleManager.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 

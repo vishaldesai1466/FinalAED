@@ -180,6 +180,7 @@ public class RequestLaptopJPanel extends javax.swing.JPanel {
 
         tblStores.setBackground(new java.awt.Color(51, 0, 51));
         tblStores.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
+        tblStores.setForeground(new java.awt.Color(0, 255, 50));
         tblStores.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 

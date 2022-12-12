@@ -66,6 +66,7 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
 
         networkJTable.setBackground(new java.awt.Color(51, 0, 51));
         networkJTable.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
+        networkJTable.setForeground(new java.awt.Color(0, 255, 50));
         networkJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 

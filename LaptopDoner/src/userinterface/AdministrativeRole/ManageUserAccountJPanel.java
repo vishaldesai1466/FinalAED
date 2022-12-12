@@ -117,6 +117,7 @@ public class ManageUserAccountJPanel extends javax.swing.JPanel {
 
         userJTable.setBackground(new java.awt.Color(51, 0, 51));
         userJTable.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
+        userJTable.setForeground(new java.awt.Color(0, 255, 50));
         userJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 

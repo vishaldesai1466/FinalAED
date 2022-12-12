@@ -67,6 +67,7 @@ public class ManageStoresJPanel extends javax.swing.JPanel {
 
         storesJTable.setBackground(new java.awt.Color(51, 0, 51));
         storesJTable.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
+        storesJTable.setForeground(new java.awt.Color(0, 255, 50));
         storesJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -190,8 +191,7 @@ public class ManageStoresJPanel extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(backJButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(addJButton)
-                        .addGap(20, 20, 20)))
+                        .addComponent(addJButton)))
                 .addContainerGap(314, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()

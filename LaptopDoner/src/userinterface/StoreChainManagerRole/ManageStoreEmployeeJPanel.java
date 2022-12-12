@@ -54,6 +54,7 @@ public class ManageStoreEmployeeJPanel extends javax.swing.JPanel {
 
         storesJTable.setBackground(new java.awt.Color(51, 0, 51));
         storesJTable.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
+        storesJTable.setForeground(new java.awt.Color(0, 255, 50));
         storesJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 

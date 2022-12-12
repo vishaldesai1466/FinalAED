@@ -101,6 +101,7 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
 
         enterpriseJTable.setBackground(new java.awt.Color(51, 0, 51));
         enterpriseJTable.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
+        enterpriseJTable.setForeground(new java.awt.Color(0, 255, 50));
         enterpriseJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
