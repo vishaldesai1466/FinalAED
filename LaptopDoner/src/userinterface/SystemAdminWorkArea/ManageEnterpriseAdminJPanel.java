@@ -93,10 +93,13 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
         jLabel6 = new javax.swing.JLabel();
         nameJTextField = new javax.swing.JTextField();
 
-        setBackground(new java.awt.Color(153, 255, 255));
+        setBackground(new java.awt.Color(0, 0, 0));
         setToolTipText("");
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jScrollPane1.setForeground(new java.awt.Color(0, 255, 50));
+
+        enterpriseJTable.setBackground(new java.awt.Color(51, 0, 51));
         enterpriseJTable.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
         enterpriseJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -116,15 +119,17 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(enterpriseJTable);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 523, 95));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 780, 95));
 
         jLabel1.setFont(new java.awt.Font("Lucida Calligraphy", 1, 12)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 255, 50));
         jLabel1.setText("Network");
         jLabel1.setToolTipText("");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, -1, -1));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 220, -1, -1));
 
-        networkJComboBox.setBackground(new java.awt.Color(255, 51, 0));
+        networkJComboBox.setBackground(new java.awt.Color(51, 0, 51));
         networkJComboBox.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
+        networkJComboBox.setForeground(new java.awt.Color(0, 255, 50));
         networkJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         networkJComboBox.setToolTipText("");
         networkJComboBox.addActionListener(new java.awt.event.ActionListener() {
@@ -132,44 +137,53 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
                 networkJComboBoxActionPerformed(evt);
             }
         });
-        add(networkJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 160, 200, -1));
+        add(networkJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 220, 200, -1));
 
-        enterpriseJComboBox.setBackground(new java.awt.Color(255, 51, 0));
+        enterpriseJComboBox.setBackground(new java.awt.Color(51, 0, 51));
         enterpriseJComboBox.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
+        enterpriseJComboBox.setForeground(new java.awt.Color(0, 255, 50));
         enterpriseJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         enterpriseJComboBox.setToolTipText("");
-        add(enterpriseJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 190, 200, -1));
+        add(enterpriseJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 250, 200, -1));
 
         jLabel3.setFont(new java.awt.Font("Lucida Calligraphy", 1, 12)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 255, 50));
         jLabel3.setText("Enterprise");
         jLabel3.setToolTipText("");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, -1, -1));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 250, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Lucida Calligraphy", 1, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 255, 50));
         jLabel2.setText("Username");
         jLabel2.setToolTipText("");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, -1, -1));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 310, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Lucida Calligraphy", 1, 12)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 255, 50));
         jLabel4.setText("Password");
         jLabel4.setToolTipText("");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, -1, -1));
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 340, -1, -1));
 
+        passwordJPasswordField.setBackground(new java.awt.Color(51, 0, 51));
         passwordJPasswordField.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
+        passwordJPasswordField.setForeground(new java.awt.Color(0, 255, 50));
         passwordJPasswordField.setToolTipText("");
         passwordJPasswordField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 passwordJPasswordFieldActionPerformed(evt);
             }
         });
-        add(passwordJPasswordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 280, 200, -1));
+        add(passwordJPasswordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 340, 200, -1));
 
+        usernameJTextField.setBackground(new java.awt.Color(51, 0, 51));
         usernameJTextField.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
+        usernameJTextField.setForeground(new java.awt.Color(0, 255, 50));
         usernameJTextField.setToolTipText("");
-        add(usernameJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 250, 200, -1));
+        add(usernameJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 310, 200, -1));
 
-        submitJButton.setBackground(new java.awt.Color(255, 51, 0));
+        submitJButton.setBackground(new java.awt.Color(51, 0, 51));
         submitJButton.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
+        submitJButton.setForeground(new java.awt.Color(0, 255, 50));
         submitJButton.setText("Submit");
         submitJButton.setToolTipText("");
         submitJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -177,10 +191,11 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
                 submitJButtonActionPerformed(evt);
             }
         });
-        add(submitJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 320, 80, -1));
+        add(submitJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 400, 80, -1));
 
-        backJButton.setBackground(new java.awt.Color(255, 51, 0));
+        backJButton.setBackground(new java.awt.Color(51, 0, 51));
         backJButton.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
+        backJButton.setForeground(new java.awt.Color(0, 255, 50));
         backJButton.setText("<< Back");
         backJButton.setToolTipText("");
         backJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -188,16 +203,19 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
                 backJButtonActionPerformed(evt);
             }
         });
-        add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 320, -1, -1));
+        add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 400, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Lucida Calligraphy", 1, 12)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(0, 255, 50));
         jLabel6.setText("Name");
         jLabel6.setToolTipText("");
-        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, -1, -1));
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 280, -1, -1));
 
+        nameJTextField.setBackground(new java.awt.Color(51, 0, 51));
         nameJTextField.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
+        nameJTextField.setForeground(new java.awt.Color(0, 255, 50));
         nameJTextField.setToolTipText("");
-        add(nameJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 220, 200, -1));
+        add(nameJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 280, 200, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void networkJComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_networkJComboBoxActionPerformed

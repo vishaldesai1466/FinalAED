@@ -59,9 +59,12 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         backJButton = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(153, 255, 255));
+        setBackground(new java.awt.Color(0, 0, 0));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jScrollPane1.setForeground(new java.awt.Color(0, 255, 50));
+
+        networkJTable.setBackground(new java.awt.Color(51, 0, 51));
         networkJTable.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
         networkJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -88,34 +91,39 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(networkJTable);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 404, 91));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 780, 160));
 
-        submitJButton.setBackground(new java.awt.Color(255, 51, 0));
+        submitJButton.setBackground(new java.awt.Color(51, 0, 51));
         submitJButton.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
+        submitJButton.setForeground(new java.awt.Color(0, 255, 50));
         submitJButton.setText("Submit");
         submitJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 submitJButtonActionPerformed(evt);
             }
         });
-        add(submitJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 180, -1, -1));
+        add(submitJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 300, -1, -1));
 
+        nameJTextField.setBackground(new java.awt.Color(51, 0, 51));
         nameJTextField.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
-        add(nameJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 140, 160, -1));
+        nameJTextField.setForeground(new java.awt.Color(0, 255, 50));
+        add(nameJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 250, 160, -1));
 
         jLabel1.setFont(new java.awt.Font("Lucida Calligraphy", 1, 12)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 255, 50));
         jLabel1.setText("Name");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, -1, -1));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 250, -1, -1));
 
-        backJButton.setBackground(new java.awt.Color(255, 51, 0));
+        backJButton.setBackground(new java.awt.Color(51, 0, 51));
         backJButton.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
+        backJButton.setForeground(new java.awt.Color(0, 255, 50));
         backJButton.setText("<< Back");
         backJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backJButtonActionPerformed(evt);
             }
         });
-        add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, -1, -1));
+        add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 300, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void submitJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitJButtonActionPerformed
